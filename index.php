@@ -20,6 +20,17 @@ echo VIEW_PATH .'Encabezado.php';
                             <small class="text-body">10 Productos</small>
                         </div>
                     </div>
+                    </a>
+  <div id="mesas-de-noche" class="collapse">
+    <!-- Opciones desplegables -->
+    <ul>
+     <div>
+        <li><a href=""><img class="img-fluid w-200" src="" alt="../Vista/img/MESAS_DE_NOCHE7.jpg"></a></li>
+     </div>
+      <li><a href=""><img class="img-fluid w-200" src="../Vista/img/MESAS_DE_NOCHE8.jpg" alt=""></a></li>
+      <li><a href=""><img class="img-fluid w-200" src="../Vista/img/MESAS_DE_NOCHE9.jpg" alt=""></a></li>
+    </ul>
+   </div>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
