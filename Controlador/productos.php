@@ -10,9 +10,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<div>";
     echo "<h3>" . $row['nombre'] . "</h3>";
     echo "<p>Precio: $" . $row['precio'] . "</p>";
-    <img src="../Vista/img/" alt="">
-
-    if ($row['cantidad'] > 0) {
+       if ($row['cantidad'] > 0) {
         echo "<p>Disponible: " . $row['cantidad'] . "</p>";
         echo "<form method='POST' action='vender.php'>
                 <input type='hidden' name='id' value='" . $row['id'] . "'>

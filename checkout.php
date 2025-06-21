@@ -1,7 +1,7 @@
 <?php
 include 'Controlador/conexion.php';
 session_start();
-include 'header.php'; // contiene el navbar
+include '../jack2/Vista/Encabezado.php'; // contiene el navbar
 
 if (!isset($_SESSION['usuario']['id'])) {
  header("Location: Inicio sesion.php");

@@ -6,7 +6,7 @@
     include 'Controlador/conexion.php';
    // include 'conexion.php';
     $resultado = $conn->query("SELECT * FROM productos");
-    include 'header.php'; // contiene el navbar
+    include '/jack2/Vista/Encabezado.php'; // contiene el navbar
     $carrito = $conn->query(" SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
     JOIN productos p ON c.producto_id   = p.id_producto 

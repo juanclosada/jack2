@@ -19,5 +19,6 @@
         <li><a href="configuracion.php">Configuración del sistema</a></li>
     </ul>
 </body>
+    header("Location:../cart.php");
 
 </html>

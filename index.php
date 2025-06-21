@@ -2,6 +2,7 @@
 include 'config/config.php';
 echo VIEW_PATH;
 include VIEW_PATH . 'Encabezado.php';
+
 echo VIEW_PATH .'Encabezado.php';
 ?>
 
@@ -785,3 +786,8 @@ echo VIEW_PATH .'Encabezado.php';
 </body>
 
 </html>
+
+<?php
+   // include 'conexion.php';
+    include '/Footer.php'; // contiene el navbar
+?>

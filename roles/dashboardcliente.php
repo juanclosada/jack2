@@ -3,10 +3,10 @@
 
 
 <?php
-    include '../Controlador/conexion.php';
+    include 'Controlador/conexion.php';
    // include 'conexion.php';
     $resultado = $conn->query("SELECT * FROM productos");
-    include '../header.php'; // contiene el navbar
+    include '../Vista/Encabezado.php'; // contiene el navbar
     $carrito = $conn->query(" SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
     JOIN productos p ON c.producto_id   = p.id_producto 
@@ -95,7 +95,7 @@
 
 <?php
    // include 'conexion.php';
-    include 'Footer.php'; // contiene el navbar
+    include '../Footer.php'; // contiene el navbar
 ?>
 
 
