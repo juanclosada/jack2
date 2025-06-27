@@ -10,7 +10,7 @@
 <body>
     <h1>Bienvenido al panel de administración del jefe de bodega</h1>
     <p>Hola, <?php session_start(); echo $_SESSION['usuario']; ?>. Eres un jefe de bodega.</p>
-    <a href="logout.php">Cerrar sesión</a>
+    <a href="../logout.php">Cerrar sesión</a>
 
     <h2>Menu Jefe de Bodega</h2>
     <ul>

@@ -25,3 +25,28 @@ while ($row = $result->fetch_assoc()) {
 }
 $conn->close();
 ?>
+
+<div class="container mt-4">
+    <div class="card mb-4">Gracias por su compra</div>   
+    <div class="row">
+        
+        <?php while($row = $resultado->fetch_assoc()) { ?>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $row['nombre'] ?></h5>
+                        <p><?= $row['descripcion'] ?></p>
+                        <p><strong>$<?= $row['precio'] ?></strong></p>
+                        <form action="agregar_carrito.php" method="post">
+                            <input type="hidden" name="producto_id" value="<?= $row['id_producto'] ?>">
+                            <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2">
+                            <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+   
+</div>

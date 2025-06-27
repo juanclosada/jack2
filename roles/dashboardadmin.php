@@ -10,15 +10,15 @@
 <body>
     <h1>Bienvenido al panel de administración</h1>
     <p>Hola, <?php session_start(); echo $_SESSION['usuario']; ?>. Eres un administrador.</p>
-    <a href="logout.php">Cerrar sesión</a>
+    <a href="../logout.php">Cerrar sesión</a>
 
     <h2>Opciones de administración</h2>
     <ul>
-        <li><a href="gestionar_usuarios.php">Gestionar usuarios</a></li>
+        <li><a href="../minegocio/frontend/src/index.js">Gestionar usuarios</a></li>
         <li><a href="ver_reportes.php">Ver reportes</a></li>
         <li><a href="configuracion.php">Configuración del sistema</a></li>
     </ul>
 </body>
-    header("Location:../cart.php");
+    header("Location:../index.js");
 
 </html>
