@@ -1,6 +1,8 @@
 <?php
 include  ENCABEZADO;
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -21,8 +23,9 @@ include  ENCABEZADO;
         <li><a href="ver_reportes.php">Ver reportes</a></li>
         <li><a href="configuracion.php">Configuración del sistema</a></li>
     </ul>
+
 </body>
-    header("Location:../cart.php");
+   
 
 </html>
 
