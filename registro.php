@@ -39,11 +39,9 @@ include  ENCABEZADO;
                         <section class="form-register" >
                             <H4>Formulario Registro</H4>
                             <select class="custom-select" name="rol" id="rol">
-                                <option class="controls" value="3">Seleccione su Rol</option>
-                                <option class="controls" value="1">Administrador</option>
-                                <option class="controls" value="2">Jefe de bodega</option>
+                                
                                 <option class="controls" value="3">Cliente</option>
-                                <option class="controls" value="4">Vendedor</option>
+                                
                             </select>
                             <input class="controls" type="text" name="nombre" id="nombre" placeholder=" Ingrese sus Nombres">
                             <input class="controls" type="text" name="apellido" id="apellido" placeholder=" Ingrese sus Apellidos">

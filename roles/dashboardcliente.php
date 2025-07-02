@@ -1,26 +1,20 @@
+<?php
+session_start();
+require_once '../config/config.php';
+include  ENCABEZADO;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
-
-<?php
-    include 'Controlador/conexion.php';
-   // include 'conexion.php';
-    $resultado = $conn->query("SELECT * FROM productos");
-    include '../Vista/Encabezado.php'; // contiene el navbar
-    $carrito = $conn->query(" SELECT c.*, p.nombre, p.precio 
-    FROM carrito c 
-    JOIN productos p ON c.producto_id   = p.id_producto 
-    WHERE c.usuario_id = " . $_SESSION['usuario']['id']
-);
-?>
-
-
+<body>
+    
 <div class="container mt-4">
     <div class="row">
         <!-- Productos -->
         <div class="col-md-8">
             <div class="row">
-                <?php while($row = $resultado->fetch_assoc()) { ?>
+               
                     <div class="col-md-6">
                         <div class="card mb-4">
                             <img src="<?= $row['URL.Imagen']?>" class="card-img-top">
@@ -36,8 +30,7 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
-            </div>
+                    </div>
         </div>
 
         <!-- Carrito -->
@@ -91,7 +84,7 @@
    
 </div>
 
-   
+ </body>  
 
 <?php
    // include 'conexion.php';

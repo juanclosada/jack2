@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
 <?php
-    include 'Controlador/conexion.php';
+    session_start();
+    //include '../Controlador/conexion.php';
    // include 'conexion.php';
-    $resultado = $conn->query("SELECT * FROM productos");
+    //$resultado = $conn->query("SELECT * FROM productos");
     include '/jack2/Vista/Encabezado.php'; // contiene el navbar
     $carrito = $conn->query(" SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
@@ -14,6 +11,8 @@
 );
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 
 <div class="container mt-4">
     <div class="row">

@@ -19,7 +19,6 @@ include  ENCABEZADO;
     <h1>Bienvenido al panel de administración</h1>
     <p>Hola, 
         <?php 
-
          echo $_SESSION['nombre']; 
          ?>. 
          Eres un administrador.</p>
