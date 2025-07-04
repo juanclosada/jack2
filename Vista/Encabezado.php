@@ -13,7 +13,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -151,7 +151,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="../index.php" class="nav-item nav-link active">Inicio</a>
+                            <a href="../jack2/index.php" class="nav-item nav-link active">Inicio</a>
                             <a href="../shop.html" class="nav-item nav-link">Tienda</a>
                             <a href="../detail.html" class="nav-item nav-link">Detalle de los Productos</a>
                             <div class="nav-item dropdown">
@@ -179,5 +179,3 @@
         </div>
     </div>
     <!-- Navbar End -->
-
-

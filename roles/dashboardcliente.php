@@ -2,27 +2,29 @@
 session_start();
 require_once '../config/config.php';
 include  ENCABEZADO;
-
+include '../Controlador/conexion.php';
+$resultado = $conn->query("SELECT * FROM productos");
+$consulta = " SELECT c.*, p.nombre, p.precio 
+    FROM carrito c 
+    JOIN productos p ON c.producto_id   = p.id_producto 
+    WHERE c.usuario_id ="  . $_SESSION['id'];
+$carrito = $conn->query($consulta);
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<body>
-    
 <div class="container mt-4">
     <div class="row">
         <!-- Productos -->
         <div class="col-md-8">
             <div class="row">
-               
+                <?php while ($row = $resultado->fetch_assoc()) { ?>
                     <div class="col-md-6">
                         <div class="card mb-4">
-                            <img src="<?= $row['URL.Imagen']?>" class="card-img-top">
+                            <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $row['nombre'] ?></h5>
                                 <p><?= $row['descripcion'] ?></p>
                                 <p><strong>$<?= $row['precio'] ?></strong></p>
-                                <form action="agregar_carrito.php" method="post">
+                                <form action="./Clientes/agregar_carrito.php" method="post">
                                     <input type="hidden" name="producto_id" value="<?= $row['id_producto'] ?>">
                                     <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2">
                                     <button type="submit" class="btn btn-primary">Agregar al carrito</button>
@@ -30,7 +32,8 @@ include  ENCABEZADO;
                             </div>
                         </div>
                     </div>
-                    </div>
+                <?php } ?>
+            </div>
         </div>
 
         <!-- Carrito -->
@@ -60,10 +63,10 @@ include  ENCABEZADO;
 </div>
 
 <div class="container mt-4">
-    <div class="card mb-4">Gracias por su compra</div>   
+    <div class="card mb-4">XXXX</div>
     <div class="row">
-        
-        <?php while($row = $resultado->fetch_assoc()) { ?>
+
+        <?php while ($row = $resultado->fetch_assoc()) { ?>
             <div class="col-md-4">
                 <div class="card mb-4">
                     <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
@@ -71,7 +74,7 @@ include  ENCABEZADO;
                         <h5 class="card-title"><?= $row['nombre'] ?></h5>
                         <p><?= $row['descripcion'] ?></p>
                         <p><strong>$<?= $row['precio'] ?></strong></p>
-                        <form action="agregar_carrito.php" method="post">
+                        <form action="../Clientes/agregar_carrito.php" method="post">
                             <input type="hidden" name="producto_id" value="<?= $row['id_producto'] ?>">
                             <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2">
                             <button type="submit" class="btn btn-primary">Agregar al carrito</button>
@@ -81,14 +84,12 @@ include  ENCABEZADO;
             </div>
         <?php } ?>
     </div>
-   
+
 </div>
 
- </body>  
+
 
 <?php
-   // include 'conexion.php';
-    include '../Footer.php'; // contiene el navbar
+// include 'conexion.php';
+include 'Footer.php'; // contiene el navbar
 ?>
-
-
