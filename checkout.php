@@ -1,14 +1,14 @@
 <?php
-include 'Controlador/conexion.php';
+include '../jack2/config/config.php';
 session_start();
 include '../jack2/Vista/Encabezado.php'; // contiene el navbar
 
-if (!isset($_SESSION['usuario']['id'])) {
- header("Location: Inicio sesion.php");
+if (!isset($_SESSION['id'])) {
+    header("Location: ../Inicio_sesion.php");
     exit();
 }
 
-$usuario_id = $_SESSION['usuario']['id'];
+$usuario_id = $_SESSION['id'];
 
 
 // Obtener detalles del carrito
@@ -16,7 +16,7 @@ $carrito = $conn->query("
   SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
     JOIN productos p ON c.producto_id = p.id_producto
-    WHERE c.usuario_id = ".$usuario_id);
+    WHERE c.usuario_id = " . $usuario_id);
 
 $total = 0;
 $productos = [];

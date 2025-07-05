@@ -53,7 +53,7 @@ $carrito = $conn->query($consulta);
                 }
                 echo "</ul>";
                 echo "<p><strong>Total: $" . number_format($total, 2) . "</strong></p>";
-                echo "<a href='checkout.php' class='btn btn-success'>Generar factura</a>";
+                echo "<a href='../checkout.php' class='btn btn-success'>Generar factura</a>";
             } else {
                 echo "<p>Tu carrito está vacío.</p>";
             }
@@ -91,5 +91,5 @@ $carrito = $conn->query($consulta);
 
 <?php
 // include 'conexion.php';
-include 'Footer.php'; // contiene el navbar
+include '../Vista/Piepagina.php'; // contiene el navbar
 ?>

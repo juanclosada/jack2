@@ -43,7 +43,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Mi Cuenta</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="../jack2/inicio_sesion.php">Inicio de Sesión</a>
+                            <a href="../jack2/Inicio_sesion.php">Inicio de Sesión</a>
                             <a href="../jack2/registro.php">Registrese Aqui</a>
                         </div>
                     </div>

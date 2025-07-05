@@ -2,8 +2,9 @@
 require_once 'config/config.php';
 include  ENCABEZADO;
 ?>
+
 <body>
-    
+
 
     <!-- Carousel Start -->
     <div class="container-fluid mb-3">
@@ -33,7 +34,7 @@ include  ENCABEZADO;
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Juego de alcobas</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Tenemos los mejores productos para ti</p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="../jack2/cart.php">Comprar ahora</a>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -103,7 +104,7 @@ include  ENCABEZADO;
         </div>
     </div>
     <!-- Featured End -->
-     
+
     <!-- Categories Start -->
     <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categorias</span></h2>
@@ -119,17 +120,17 @@ include  ENCABEZADO;
                             <small class="text-body">10 Productos</small>
                         </div>
                     </div>
-                    </a>
-  <div id="mesas-de-noche" class="collapse">
-    <!-- Opciones desplegables -->
-    <ul>
-     <div>
-        <li><a href=""><img class="img-fluid w-200" src="" alt="<?php echo IMG_PATH; ?>mesa_de_noche7.jpg"></a></li>
-     </div>
-      <li><a href=""><img class="img-fluid w-200" src="<?php echo IMG_PATH; ?>mesa_de_noche8.jpg" alt=""></a></li>
-      <li><a href=""><img class="img-fluid w-200" src="<?php echo IMG_PATH; ?>mesa_de_noche9.jpg" alt=""></a></li>
-    </ul>
-   </div>
+                </a>
+                <div id="mesas-de-noche" class="collapse">
+                    <!-- Opciones desplegables -->
+                    <ul>
+                        <div>
+                            <li><a href=""><img class="img-fluid w-200" src="" alt="<?php echo IMG_PATH; ?>mesa_de_noche7.jpg"></a></li>
+                            <li><a href=""><img class="img-fluid w-200" src="<?php echo IMG_PATH; ?>mesa_de_noche8.jpg" alt=""></a></li>
+                            <li><a href=""><img class="img-fluid w-200" src="<?php echo IMG_PATH; ?>mesa_de_noche9.jpg" alt=""></a></li>
+                        </div>
+                    </ul>
+                </div>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
@@ -298,7 +299,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Camacuna</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$300.000</h5><h6 class="text-muted ml-2"><del>$360.000</del></h6>
+                            <h5>$300.000</h5>
+                            <h6 class="text-muted ml-2"><del>$360.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -325,7 +327,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href=""></a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$290.000</h5><h6 class="text-muted ml-2"><del>$330.000</del></h6>
+                            <h5>$290.000</h5>
+                            <h6 class="text-muted ml-2"><del>$330.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -352,7 +355,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Escritorio pink</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$180.000</h5><h6 class="text-muted ml-2"><del>$210.000</del></h6>
+                            <h5>$180.000</h5>
+                            <h6 class="text-muted ml-2"><del>$210.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -379,7 +383,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Juego de alcoba clasica</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$1.600.000</h5><h6 class="text-muted ml-2"><del>$1.900.000</del></h6>
+                            <h5>$1.600.000</h5>
+                            <h6 class="text-muted ml-2"><del>$1.900.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -406,7 +411,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Silla Flex</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$100.000</h5><h6 class="text-muted ml-2"><del>$140.000</del></h6>
+                            <h5>$100.000</h5>
+                            <h6 class="text-muted ml-2"><del>$140.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -433,7 +439,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Armario iluminary</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$150.000</h5><h6 class="text-muted ml-2"><del>$190.000</del></h6>
+                            <h5>$150.000</h5>
+                            <h6 class="text-muted ml-2"><del>$190.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -460,7 +467,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Juego Camacuna Azul</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$123.000</h5><h6 class="text-muted ml-2"><del>$140.000</del></h6>
+                            <h5>$123.000</h5>
+                            <h6 class="text-muted ml-2"><del>$140.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -487,7 +495,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Silla huella</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$100.000</h5><h6 class="text-muted ml-2"><del>$123.000</del></h6>
+                            <h5>$100.000</h5>
+                            <h6 class="text-muted ml-2"><del>$123.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -551,7 +560,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Escritorio Pink</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$180.000</h5><h6 class="text-muted ml-2"><del>$210.000</del></h6>
+                            <h5>$180.000</h5>
+                            <h6 class="text-muted ml-2"><del>$210.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -578,7 +588,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Ecritorio girl</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$110.000</h5><h6 class="text-muted ml-2"><del>$130.000</del></h6>
+                            <h5>$110.000</h5>
+                            <h6 class="text-muted ml-2"><del>$130.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -605,7 +616,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Puff algodón</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$100.000</h5><h6 class="text-muted ml-2"><del>$120.000</del></h6>
+                            <h5>$100.000</h5>
+                            <h6 class="text-muted ml-2"><del>$120.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -632,7 +644,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Puff Corazón</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$100.000</h5><h6 class="text-muted ml-2"><del>$120.000</del></h6>
+                            <h5>$100.000</h5>
+                            <h6 class="text-muted ml-2"><del>$120.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -659,7 +672,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Sofá armonia</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$200.000</h5><h6 class="text-muted ml-2"><del>$240.000</del></h6>
+                            <h5>$200.000</h5>
+                            <h6 class="text-muted ml-2"><del>$240.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -686,7 +700,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Big Sofá</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$250.000</h5><h6 class="text-muted ml-2"><del>$300.000</del></h6>
+                            <h5>$250.000</h5>
+                            <h6 class="text-muted ml-2"><del>$300.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -713,7 +728,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Tendido Extrapink</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$120.000</h5><h6 class="text-muted ml-2"><del>$150.000</del></h6>
+                            <h5>$120.000</h5>
+                            <h6 class="text-muted ml-2"><del>$150.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -740,7 +756,8 @@ include  ENCABEZADO;
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" href="">Tendido Lama Elegant</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$120.000</h5><h6 class="text-muted ml-2"><del>$150.000</del></h6>
+                            <h5>$120.000</h5>
+                            <h6 class="text-muted ml-2"><del>$150.000</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -794,11 +811,11 @@ include  ENCABEZADO;
     <!-- Vendor End -->
 
 
-    
+
 </body>
 
 </html>
 <?php
-   // include 'conexion.php';
-    include_once PIEPAGINA; // contiene el navbar
+// include 'conexion.php';
+include_once PIEPAGINA; // contiene el navbar
 ?>
