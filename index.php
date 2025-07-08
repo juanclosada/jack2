@@ -774,44 +774,6 @@ include  ENCABEZADO;
     </div>
     <!-- Products End -->
 
-
-    <!-- Vendor Start -->
-    <div class="container-fluid py-5">
-        <div class="row px-xl-5">
-            <div class="col">
-                <div class="owl-carousel vendor-carousel">
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo1.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo2.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo3.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo4.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo5.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo6.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo7.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="<?php echo IMG_PATH; ?>logo8.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Vendor End -->
-
-
-
 </body>
 
 </html>
