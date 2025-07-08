@@ -1,7 +1,7 @@
 <?php
 include "conexion.php";
 $pdo = new conexion ();
-hearder("content.type: applicatin/json")
+hearder("content-type: application/json");
 
 $metodo = $_SERVER{'REQUEST_METHOD'};
 print_r($metodo);
