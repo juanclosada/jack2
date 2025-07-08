@@ -2,8 +2,8 @@
 include "../conexion.php";
 $pdo = new conexion();
 header("content-type: application/json");
-include "conexion.php";
-$pdo = new conexion ();
+
+$pdo = new conexion();
 header("content-type: application/json");
 
 $metodo  = $_SERVER['REQUEST_METHOD'];
