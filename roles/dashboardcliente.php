@@ -63,7 +63,7 @@ $carrito = $conn->query($consulta);
 </div>
 
 <div class="container mt-4">
-    <div class="card mb-4">XXXX</div>
+    <div class="card mb-4">Gracias por su compra</div>
     <div class="row">
 
         <?php while ($row = $resultado->fetch_assoc()) { ?>
