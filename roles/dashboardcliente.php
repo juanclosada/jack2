@@ -19,7 +19,7 @@ $carrito = $conn->query($consulta);
                 <?php while ($row = $resultado->fetch_assoc()) { ?>
                     <div class="col-md-6">
                         <div class="card mb-4">
-                            <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
+                            <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $row['nombre'] ?></h5>
                                 <p><?= $row['descripcion'] ?></p>
@@ -47,13 +47,24 @@ $carrito = $conn->query($consulta);
                     $subtotal = $item['precio'] * $item['cantidad'];
                     $total += $subtotal;
                     echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
+                    echo "<div>";
                     echo $item['nombre'] . " x " . $item['cantidad'];
-                    echo "<span>$" . number_format($subtotal, 2) . "</span>";
+                    echo "</div>";
+                    echo "<div class='d-flex align-items-center'>";
+                    echo "<span class='me-3'>$" . number_format($subtotal, 2) . "</span>";
+                    echo "<form action='eliminar_del_carrito.php' method='post' class='m-0'>";
+                    echo "<input type='hidden' name='carrito_id' value='" . $item['id'] . "'>";
+                    echo "<button type='submit' class='btn btn-danger btn-sm'>🗑️</button>";
+                    echo "</form>";
+                    echo "</div>";
                     echo "</li>";
                 }
                 echo "</ul>";
                 echo "<p><strong>Total: $" . number_format($total, 2) . "</strong></p>";
-                echo "<a href='../checkout.php' class='btn btn-success'>Generar factura</a>";
+                echo "<a href='../checkout.php' class='btn btn-success'>Pagar</a>";
+                echo "<form action='vaciar_carrito.php' method='post' class='mt-2'>";
+                echo "<button type='submit' class='btn btn-warning'>Vaciar carrito 🗑️</button>";
+                echo "</form>";
             } else {
                 echo "<p>Tu carrito está vacío.</p>";
             }

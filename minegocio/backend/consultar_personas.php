@@ -4,7 +4,7 @@ header("access-control-allow-Methods: HEAD, GET, POST, PUP, PATCH, DELETE, OPTIO
 header("access-control-allow-Headers: X-API-KEY, Origin,X-Requested-Content-Type, Accept, Accesscontrol-Request-Method, Access-control-Request-Headers, Authorization");
 header('Content-Type: application/json');
 
-require "config.php"; // llamar conexion
+require "../conexion.php"; // llamar conexion
 
 mysqli_set_charset($con, "utf8");
 $consulta = "SELECT * FROM personas order by nombre"; // Consulta
