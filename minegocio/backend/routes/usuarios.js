@@ -13,13 +13,19 @@ router.get('/', (req, res) => {
 // Crear nuevo usuario
 router.post('/', (req, res) => {
   const { nombre, correo, contrasena, id_rol } = req.body;
+
+  if (!nombre || !correo || !contrasena || !id_rol) {
+    return res.status(400).json({ message: 'Todos los campos son requeridos' });
+  }
+
   db.query('INSERT INTO usuarios (nombre, correo, contrasena, id_rol) VALUES (?, ?, ?, ?)',
     [nombre, correo, contrasena, id_rol],
     (err, result) => {
-      if (err) throw err;
-      res.send({ message: 'Usuario creado' });
+      if (err) return res.status(500).json({ message: 'Error al crear usuario', error: err });
+      res.status(201).send({ message: 'Usuario creado correctamente' });
     });
 });
+
 
 // Actualizar usuario
 router.put('/:id', (req, res) => {

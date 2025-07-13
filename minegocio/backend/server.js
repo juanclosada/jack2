@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const usuariosRoutes = require('./routes/usuarios');
-
 const app = express();
+const puerto = 3001;
+
+// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/api/usuarios', usuariosRoutes);
 
-app.listen(3001, () => {
-  console.log('Servidor backend corriendo en puerto 3001');
+// Rutas
+const usuariosRouter = require('./routes/usuarios');
+app.use('/api/usuarios', usuariosRouter);
+
+// Iniciar servidor
+app.listen(puerto, () => {
+  console.log(`Servidor corriendo en http://localhost:${puerto}`);
 });
