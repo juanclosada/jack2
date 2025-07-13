@@ -3,10 +3,10 @@
 
 
 <?php
-    include 'Controlador/conexion.php';
-   // include 'conexion.php';
-    $resultado = $conn->query("SELECT * FROM productos");
-    include '/jack2/Vista/Encabezado.php'; // contiene el navbar
+include 'Controlador/conexion.php';
+// include 'conexion.php';
+$resultado = $conn->query("SELECT * FROM productos");
+include '/jack2/Vista/Encabezado.php'; // contiene el navbar
     $carrito = $conn->query(" SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
     JOIN productos p ON c.producto_id   = p.id_producto 
@@ -67,10 +67,10 @@
 </div>
 
 <div class="container mt-4">
-    <div class="card mb-4">Gracias por su compra</div>   
+    <div class="card mb-4">Gracias por su compra</div>
     <div class="row">
-        
-        <?php while($row = $resultado->fetch_assoc()) { ?>
+
+        <?php while ($row = $resultado->fetch_assoc()) { ?>
             <div class="col-md-4">
                 <div class="card mb-4">
                     <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
@@ -88,14 +88,12 @@
             </div>
         <?php } ?>
     </div>
-   
+
 </div>
 
-   
+
 
 <?php
-   // include 'conexion.php';
-    include 'Footer.php'; // contiene el navbar
+// include 'conexion.php';
+include_once PIEPAGINA; // contiene el navbar
 ?>
-
-

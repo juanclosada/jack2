@@ -9,3 +9,4 @@ define('CSS_PATH', '/jack2/Vista/css/');
 define('JS_PATH', '/jack2/Vista/js/');
 define('LIB_PATH', '/jack2/Vista/lib/');
 define('PHP_PATH', '/jack2/index.php/');
+define('VISTA_PATH', '/jack2/vista/');

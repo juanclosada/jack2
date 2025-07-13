@@ -152,16 +152,16 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="../jack2/index.php" class="nav-item nav-link active">Inicio</a>
-                            <a href="../shop.html" class="nav-item nav-link">Tienda</a>
+                            <a href="<?php echo VISTA_PATH; ?>../shop.html" class="nav-item nav-link">Tienda</a>
                             <a href="../detail.html" class="nav-item nav-link">Detalle de los Productos</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="../cart.html" class="dropdown-item">Carrito de Compra</a>
-                                    <a href="../checkout.html" class="dropdown-item">Realizar Pagos</a>
+                                    <a href="../cart.php" class="dropdown-item">Carrito de Compra</a>
+                                    <a href="../checkout.php" class="dropdown-item">Realizar Pagos</a>
                                 </div>
                             </div>
-                            <a href="../ontact.html" class="nav-item nav-link">Contactenos</a>
+                            <a href="../Contact.html" class="nav-item nav-link">Contactenos</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">

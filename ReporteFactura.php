@@ -58,7 +58,7 @@ $total = 0;
         <!-- Encabezado -->
         <div class="row factura-header align-items-center">
             <div class="col-md-2">
-                <img src="<?php echo IMG_PATH; ?>Favicon.jpg" alt="Logo" class="logo"> <!-- Reemplaza con tu logo -->
+                <img src="<?php echo IMG_PATH; ?>Favicon.jpg" alt="Logo" class="logo"> <!-- logo empresa 2JACK-->
             </div>
             <div class="col-md-10 text-end">
                 <h4>2JACK S.A.S</h4>
