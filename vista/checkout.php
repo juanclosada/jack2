@@ -16,7 +16,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     include_once '../controlador/conexion.php';
 
     if (empty($_SESSION['id'])) {
-        header("Location: vista/login.php");
+        header("Location: login.php");
         exit();
     }
     $usuario_id = $_SESSION['id'];
