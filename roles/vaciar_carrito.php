@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../Controlador/conexion.php';
+include '../controlador/conexion.php';
 
 if (isset($_SESSION['id'])) {
     $usuario_id = $_SESSION['id'];

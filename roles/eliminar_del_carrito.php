@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../Controlador/conexion.php';
+include '../controlador/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['carrito_id'])) {
     $carrito_id = intval($_POST['carrito_id']);

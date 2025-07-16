@@ -10,7 +10,7 @@ $contrasena1 = $_POST['contrasena1'];
 $id_rol = $_POST['rol'];
 
 if (strlen($contrasena) < 8) {
-    echo "La contraseña debe tener entre 8 y 20 caracteres. <a href='../registro.php'>Registrar Nuevamente</a>";
+    echo "La contraseña debe tener entre 8 y 20 caracteres. <a href='../vista/registro.php'>Registrar Nuevamente</a>";
 } else {
 
     if ($contrasena == $contrasena1) {
@@ -21,18 +21,16 @@ if (strlen($contrasena) < 8) {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssi", $nombre, $correo, $contrasena, $id_rol);
         if ($stmt->execute()) {
-            echo "Usuario registrado correctamente. <a href='../Inicio_sesion.php'>Iniciar sesión</a>";
+
+            echo "Usuario registrado correctamente. <a href='../vista/login.php'>Iniciar sesión</a>";
         } else {
             echo "Error al registrar usuario: " . $conn->error;
         }
     } else {
-        echo "Las contraseñas no coinciden. <a href='../registro.php'>Registrar Nuevamente</a>";
+        echo "Las contraseñas no coinciden. <a href='vista/registro.php'>Registrar Nuevamente</a>";
     }
 }
 
 
 
 $conn->close();
-
-
-?>

@@ -46,5 +46,5 @@ if ($result->num_rows === 1) {
 
     //  header("Location: dashboard.php");
 } else {
-    echo "Usuario o contraseña incorrectos.<a href='../Inicio_sesion.php'>Ingresar Nuevamente</a>";
+    echo "Usuario o contraseña incorrectos.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
 }

@@ -40,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location:../cart.php");
             // exit;
         } else {
-            echo "❌ Contraseña incorrecta. <a href='../Inicio_sesion.php'>Ingresar Nuevamente</a>";
+            echo "❌ Contraseña incorrecta. <a href='../vista/login.php'>Ingresar Nuevamente</a>";
         }
     } else {
-        echo "❌ Usuario no encontrado. <a href='../Inicio_sesion.php'>Ingresar Nuevamente</a>";
+        echo "❌ Usuario no encontrado. <a href='../vista/login.php'>Ingresar Nuevamente</a>";
     }
 
     $stmt->close();
