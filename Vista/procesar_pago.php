@@ -105,7 +105,7 @@ if ($factura_id != 1) {
         window.open("ReporteFactura.php?factura_id=<?= $factura_id ?>", "_blank");
 
         // Redirige la ventana actual a otra página, si quieres
-        window.location.href = "/roles/dashboardcliente.php"; // opcional
+        window.location.href = "../roles/dashboardcliente.php"; // opcional
     </script>
 <?php
 } else {

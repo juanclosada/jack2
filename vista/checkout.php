@@ -139,7 +139,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                     </div>
                 <?php else: ?>
                     <div class="alert alert-warning">
-                        Tu carrito está vacío. <a href="productos.php" class="alert-link">Ver productos</a>.
+                        Tu carrito está vacío. <a href="cart.php" class="alert-link">Ver productos</a>.
                     </div>
                 <?php endif; ?>
             </div>
