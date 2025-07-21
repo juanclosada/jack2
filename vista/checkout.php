@@ -49,7 +49,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header bg-success text-white">
-                <h4 class="mb-0">🧾 RESUMEN DE PAGO</h4>
+                <h4 class="mb-0">🧾 Resumen de pago</h4>
             </div>
             <div class="card-body">
                 <?php if (count($productos) > 0): ?>

@@ -57,7 +57,7 @@
                  <div class="offer-text">
                      <h6 class="text-white text-uppercase">Ahorra 20%</h6>
                      <h3 class="text-white mb-3">Oferta especial</h3>
-                     <a href="" class="btn btn-primary">comprar ahora</a>
+                     <a href="" class="btn btn-primary">Comprar ahora</a>
                  </div>
              </div>
          </div>
