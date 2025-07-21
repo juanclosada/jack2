@@ -10,7 +10,7 @@
         </div>
         <div class="col-lg-8 col-md-12">
             <div class="row">
-                <div class="col-md-4 mb-5">
+                <!-- <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4"> TIENDA EXPRES</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
@@ -19,8 +19,8 @@
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Foma de Pagos</a>
                         <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div>
                 <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4">Mi Cuenta</h5>
                     <div class="d-flex flex-column justify-content-start">
@@ -30,8 +30,8 @@
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
                         <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Foma de Pagos</a>
                         <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contactanos</a>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div>
                 <div class="col-md-4 mb-5">
                     <h5 class="text-secondary text-uppercase mb-4">Hoja informativa</h5>
                     <p>Aqui puede encontrar diferente Información de nuestra tienda </p>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </form>
-                    <h6 class="text-secondary text-uppercase mt-4 mb-3"> Siguenos</h6>
+                    <h6 class="text-secondary text-uppercase mt-4 mb-3"> Siguenos</h6> -->
                     <div class="d-flex">
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
