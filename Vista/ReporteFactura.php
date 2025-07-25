@@ -1,22 +1,20 @@
 <?php
-// include '../config/config.php';
+
 include '../controlador/conexion.php';
 session_start();
-
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['usuario']['id'])) {
     header("Location: ../vista/login.php");
     exit();
 }
-
-$factura_id = isset($_GET['factura_id']) ? intval($_GET['factura_id']) : 0;
-
-$sql = "SELECT * FROM detalle_factura WHERE factura_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $factura_id);
-$stmt->execute();
-$resultado = $stmt->get_result();
-
-$total = 0;
+$factura_id = base64_decode($_GET['factura_id']);
+$db = new Conexion();
+$factura = $db->consultarRegistro('SELECT * FROM factura WHERE id = :id', ['id' => $factura_id]);
+if (empty($factura)) {
+    echo "Factura no encontrada.";
+    exit();
+}
+$productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM detalle_factura d  JOIN productos p ON d.producto_id   = p.id_producto WHERE factura_id = :factura_id', ['factura_id' => $factura_id]);
+//mostrar($productos);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +49,8 @@ $total = 0;
             font-size: 1.1rem;
         }
     </style>
+    <?php
+    include dirname(__DIR__) . '/vista/layout/head.php'; ?>
 </head>
 
 <body>
@@ -72,42 +72,44 @@ $total = 0;
         <h4 class="text-center mb-4">Factura #<?= $factura_id ?></h4>
 
         <!-- Tabla de productos -->
-        <table class="table table-bordered">
-            <thead class="table-light">
-                <tr>
-                    <th>Producto</th>
-                    <th>Descripción</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $resultado->fetch_assoc()) {
-                    $subtotal = $row['Subtotal'];
-                    $total += $subtotal;
-                ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-light">
                     <tr>
-                        <td><?= $row['nombre_p'] ?></td>
-                        <td><?= $row['desc_p'] ?></td>
-                        <td><?= $row['cantidad'] ?></td>
-                        <td>$<?= number_format($row['Precio'], 0, ',', '.') ?></td>
-                        <td>$<?= number_format($subtotal, 0, ',', '.') ?></td>
+                        <th>NombreP</th>
+                        <th>Descripción</th>
+                        <th class="text-center">Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Total</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-            <tfoot>
-                <tr class="table-light total-row">
-                    <td colspan="4" class="text-end">Total:</td>
-                    <td>$<?= number_format($total, 0, ',', '.') ?></td>
-                </tr>
-            </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($productos as $prod): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($prod['nombre']) ?></td>
+                            <td><?= htmlspecialchars($prod['descripcion']) ?></td>
+                            <td class="text-center"><?= $prod['cantidad'] ?></td>
+                            <td>$<?= number_format($prod['Subtotal'], 2) ?></td>
+                            <td>$<?= number_format($prod['Precio'], 2) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr class="table-light total-row">
+                        <td colspan="4" class="text-end">Total:</td>
+                        <td>$<?= number_format($factura['total'], 0, ',', '.') ?></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
         <div class="text-end mb-4">
             <button class="btn btn-primary" onclick="window.print()">
                 🖨️ Imprimir factura
             </button>
+            <a href="login.php" class="btn btn-secondary">
+                Volver
+                </button>
         </div>
 
         <!-- Pie de página -->

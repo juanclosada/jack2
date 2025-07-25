@@ -17,7 +17,6 @@ class Conexion
     public function conectar()
     {
         try {
-
             $connection = "mysql:host=" . DB_HOST . ";dbname=" . DB_TABLE;
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -74,7 +73,7 @@ class Conexion
             $resdb = self::conectar()->prepare($query);
             $resdb->execute($campos);
         } catch (\Throwable $th) {
-            imprimir([$query, $campos, $filtro, $th]);
+            mostrar([$query, $campos, $filtro, $th]);
         }
         $respuesta = [];
         if ($resdb->rowCount() > 0) {
@@ -116,13 +115,15 @@ class Conexion
     {
         //
         $i = 0;
-        $campos = $valores = '';
+        $campos = $valores =  $valores2 = '';
         foreach ($datos as $key => $value) {
             $campos .= ($i == 0 ? $key : ", " . $key);
+            $valores2 .= ($i == 0 ? "" . $value : ", " . $value);
             $valores .= ($i == 0 ? ":" . $key : ", :" . $key);
             $i++;
         }
         $query = "INSERT INTO $tabla ($campos) VALUES ($valores)";
+       // mostrar($query);
         $resdb = self::conectar()->prepare($query);
         return $resdb->execute($datos);
     }
@@ -150,7 +151,7 @@ class Conexion
         $i = 0;
         $campos = '';
         foreach ($datos as $key => $value) {
-            $campos .= ($i == 0 ? "$key = :$key" : ", $key = :$key");
+            $campos .= ($i == 0 ? "$key = :$key" : " AND $key = :$key");
             $i++;
         }
         $query = "DELETE FROM $tabla WHERE $campos";
@@ -162,5 +163,29 @@ class Conexion
     {
         $nRows = self::conectar()->query("SELECT COUNT(*) FROM $query")->fetchColumn();
         return $nRows;
+    }
+}
+function mostrar($data)
+{
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+    die();
+}
+function redirecion()
+{
+    switch ($_SESSION['usuario']['id_rol']) {
+        case '1':
+            header("location: dashboardadmin.php");
+            break;
+        case '2':
+            header("location: ../roles/dashboardjefe.php");
+            break;
+        case '3':
+            header("location: ../vista/dashboardcliente.php");
+            break;
+        default:
+            echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+            break;
     }
 }

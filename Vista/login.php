@@ -2,6 +2,25 @@
 <html lang="en">
 <?php
 include dirname(__DIR__) . '/vista/layout/head.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!empty($_SESSION['usuario'])) {
+    switch ($_SESSION['usuario']['id_rol']) {
+        case '1':
+            header("location: dashboardadmin.php");
+            break;
+        case '2':
+            header("location: ../roles/dashboardjefe.php");
+            break;
+        case '3':
+            header("location: ../vista/dashboardcliente.php");
+            break;
+        default:
+            echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+            break;
+    }
+}
 ?>
 
 

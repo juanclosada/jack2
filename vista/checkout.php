@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+include_once '../controlador/conexion.php';
+
 include dirname(__DIR__) . '/vista/layout/head.php';
 ?>
 
@@ -13,36 +16,48 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    include_once '../controlador/conexion.php';
 
-    if (empty($_SESSION['id'])) {
+    if (empty($_SESSION['usuario']['id'])) {
         header("Location: login.php");
         exit();
     }
-    $usuario_id = $_SESSION['id'];
-
-
-    // Obtener detalles del carrito
-    $carrito = $conn->query("
-  SELECT c.*, p.nombre, p.precio 
+    $db = new Conexion();
+    $db->eliminarRegistro('factura', ['usuario_id' => $_SESSION['usuario']['id'], 'estado' => 1]);
+    $sql = "SELECT c.*, p.nombre, p.precio 
     FROM carrito c 
-    JOIN productos p ON c.producto_id = p.id_producto
-    WHERE c.usuario_id = " . $usuario_id);
-
+    JOIN productos p ON c.producto_id   = p.id_producto 
+    WHERE c.usuario_id =:id AND c.estado = 1";
+    $carrito = $db->consultarRegistros2($sql, ['id' =>  $_SESSION['usuario']['id']]);
     $total = 0;
     $productos = [];
-
-    while ($item = $carrito->fetch_assoc()) {
-        $item['subtotal'] = $item['precio'] * $item['cantidad'];
-        $total += $item['subtotal'];
+    foreach ($carrito as $key => $item) {
+        $item['total'] = $item['precio'] * $item['cantidad'];
+        $item['subtotal'] = $item['precio'];
+        $total +=  $item['total'];
         $productos[] = $item;
     }
+    $datos = [
+        'usuario_id' => $_SESSION['usuario']['id'],
+        'fecha' => date('Y-m-d H:i:s'),
+        'descuento' => 0,
+        'IVA' => 0,
+        'total' => $total,
+        'estado' => 1
+    ];
+    $db->insertarRegistro('factura', $datos);
+    $id = $db->lastInsertId();
+    // Guardar detalles de la factura
+    foreach ($productos as $key => $value) {
+        $db->insertarRegistro('detalle_factura', [
+            'usuario_id' => $_SESSION['usuario']['id'],
+            'producto_id' => $value['producto_id'],
+            'factura_id' =>  $id,
+            'cantidad' => $value['cantidad'],
+            'Precio' => $value['total'],
+            'Subtotal' => $value['subtotal']
+        ]);
+    }
 
-    // Guardar factura
-    //if ($tot  al > 0) {
-    //    $conn->query("INSERT INTO factura (nombre, total) VALUES ($usuario_id, $total)");
-    //    $conn->query("DELETE FROM carrito WHERE usuario_id = $usuario_id");
-    //}
 
     ?>
 
@@ -53,13 +68,13 @@ include dirname(__DIR__) . '/vista/layout/head.php';
             </div>
             <div class="card-body">
                 <?php if (count($productos) > 0): ?>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped text-dark">
                         <thead class="table-success">
                             <tr>
                                 <th>Producto</th>
                                 <th>Precio Unitario</th>
                                 <th>Cantidad</th>
-                                <th>Subtotal</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,11 +83,11 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                     <td><?= htmlspecialchars($prod['nombre']) ?></td>
                                     <td>$<?= number_format($prod['precio'], 2) ?></td>
                                     <td><?= $prod['cantidad'] ?></td>
-                                    <td>$<?= number_format($prod['subtotal'], 2) ?></td>
+                                    <td>$<?= number_format($prod['total'], 2) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="table-secondary">
-                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                <td colspan="3" class="text-right"><strong>Total:</strong></td>
                                 <td><strong>$<?= number_format($total, 2) ?></strong></td>
                             </tr>
                         </tbody>
@@ -84,16 +99,16 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                 <h4 class="mb-0">Formulario de Pago</h4>
                             </div>
                             <div class="card-body">
-                                <form action="procesar_pago.php" method="POST">
+                                <form action="../modelo/procesar_pago.php" method="POST" autocomplete="on">
 
                                     <!-- Método de pago -->
                                     <div class="mb-3">
                                         <label for="metodo" class="form-label">Método de pago</label>
-                                        <select class="form-select" id="metodo" name="metodo" required>
+                                        <select class="form-control" id="metodo" name="metodo" required>
                                             <option value="">Seleccione una opción</option>
-                                            <option value="credito">Tarjeta de Crédito</option>
-                                            <option value="debito">Tarjeta Débito</option>
-                                            <option value="nequi">Nequi</option>
+                                            <option value="1">Tarjeta de Crédito</option>
+                                            <option value="2">Tarjeta Débito</option>
+                                            <option value="3">Nequi</option>
                                         </select>
                                     </div>
 
@@ -107,6 +122,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                     <div class="mb-3">
                                         <label for="numero" class="form-label">Número de tarjeta / Nequi</label>
                                         <input type="text" class="form-control" id="numero" name="numero" placeholder="Número de tarjeta o Nequi" required>
+                                        <input type="text" class="form-control d-none" id="id" name="id" placeholder="" required value="<?= $id ?>">
                                     </div>
 
                                     <!-- Fecha y CVV -->
@@ -134,7 +150,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                     </div>
 
                     <div class="text-end">
-                        <a href="/roles/dashboardcliente.php" class="btn btn-outline-primary">🛍️ Seguir comprando</a>
+                        <a href="dashboardcliente.php" class="btn btn-outline-primary">🛍️ Seguir comprando</a>
                         <a href="logout.php" class="btn btn-outline-danger">Cerrar sesión</a>
                     </div>
                 <?php else: ?>
@@ -144,10 +160,11 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                 <?php endif; ?>
             </div>
         </div>
-        <?php
-        include dirname(__DIR__) . '/vista/layout/footer.php';
-        ?>
+    </div>
 </body>
+<?php
+include dirname(__DIR__) . '/vista/layout/footer.php';
+?>
 <?php
 include dirname(__DIR__) . '/vista/layout/script.php';
 ?>

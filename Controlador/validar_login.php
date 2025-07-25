@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexion.php');
+include_once('conexion.php');
 
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
@@ -12,18 +12,19 @@ $usuario = $db->consultarRegistro($sql, ['correo' => $correo]);
 echo password_hash($contrasena, PASSWORD_DEFAULT);
 if (!empty($usuario)) {
     if (password_verify($contrasena, $usuario["contrasena"])) {
-        $_SESSION['rol'] = $usuario['cargo'];
-        $_SESSION['nombre'] = $usuario['nombre'];
-        $_SESSION['id'] =  $usuario['id_usuario'];
+        $_SESSION['usuario']['rol'] = $usuario['cargo'];
+        $_SESSION['usuario']['id_rol'] = $usuario['id_rol'];
+        $_SESSION['usuario']['nombre'] = $usuario['nombre'];
+        $_SESSION['usuario']['id'] =  $usuario['id_usuario'];
         switch ($usuario['id_rol']) {
             case '1':
-                header("location: ../roles/dashboardadmin.php");
+                header("location: dashboardadmin.php");
                 break;
             case '2':
                 header("location: ../roles/dashboardjefe.php");
                 break;
             case '3':
-                header("location: ../roles/dashboardcliente.php");
+                header("location: ../vista/dashboardcliente.php");
                 break;
             default:
                 echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
