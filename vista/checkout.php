@@ -46,6 +46,11 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     ];
     $db->insertarRegistro('factura', $datos);
     $id = $db->lastInsertId();
+    foreach ($productos as $key => $value) {
+        $db->actualizarRegistro('carrito', [
+            'factura_id' => $id
+        ], ['id' => $value['id']]);
+    }
     // Guardar detalles de la factura
     foreach ($productos as $key => $value) {
         $db->insertarRegistro('detalle_factura', [

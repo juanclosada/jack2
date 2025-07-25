@@ -123,7 +123,7 @@ class Conexion
             $i++;
         }
         $query = "INSERT INTO $tabla ($campos) VALUES ($valores)";
-       // mostrar($query);
+        // mostrar($query);
         $resdb = self::conectar()->prepare($query);
         return $resdb->execute($datos);
     }
@@ -138,7 +138,7 @@ class Conexion
         }
         $i = 0;
         foreach ($datosCondicion as $key => $value) {
-            $camposCondicion .= ($i == 0 ? "$key = :$key" : ", $key = :$key");
+            $camposCondicion .= ($i == 0 ? "$key = :$key" : " AND $key = :$key");
             $i++;
         }
         $query = "UPDATE $tabla SET $campos";

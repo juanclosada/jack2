@@ -19,7 +19,7 @@ $query = $db->actualizarRegistro('factura', [
     'estado' => 2,
     'IVA' => $iva,
 ], ['id' => $factura['id']]);
-$db->actualizarRegistro('carrito', ['estado' => 2], ['usuario_id' => $_SESSION['usuario']['id'], 'estado' => 1]);
+$db->actualizarRegistro('carrito', ['estado' => 2], ['factura_id' => $factura['id']]);
 //
 if ($query) {
     header("location: ../vista/ReporteFactura.php?factura_id=" . base64_encode($factura['id']));
