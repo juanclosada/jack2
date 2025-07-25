@@ -11,3 +11,10 @@ define('LIB_PATH', '/jack2/Vista/lib/');
 define('PHP_PATH', '/jack2/index.php/');
 
 define('VISTA_PATH', '/jack2/vista/');
+
+// Database configuration
+define("DB_HOST", "localhost");
+define("DB_TABLE", "mi_negocio");
+define("DB_USER", "root");
+define("DB_PASSWORD", "");
+
