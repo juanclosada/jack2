@@ -22,7 +22,7 @@
           if (session_status() === PHP_SESSION_NONE) {
             session_start();
           }
-          if (empty($_SESSION['id'])) {
+          if (empty($_SESSION['usuario']['id'])) {
             echo '<a href="login.php" class="btn btn-light">Inicio de Sesión</a>';
             echo '<a href="registro.php" class="btn btn-light">Registrese Aqui</a>';
           } else {

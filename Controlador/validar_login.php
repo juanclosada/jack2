@@ -1,50 +1,39 @@
 <?php
 session_start();
-include('conexion.php');
+include_once('conexion.php');
 
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 
-$sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $correo, $contrasena);
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "SELECT u.*, r.cargo FROM usuarios  u JOIN roles r  ON u.id_rol = r.id_rol WHERE correo = :correo";
+$db = new Conexion();
 
-if ($result->num_rows === 1) {
-    $usuario = $result->fetch_assoc();
-    $id = $usuario['id_usuario'];
-    $rol = $usuario['id_rol'];
-    $nombre = $usuario['nombre'];
-
-    if ($rol == 1) {
-        $_SESSION['rol'] = 'admin';
-        $_SESSION['nombre'] = $nombre;
-        header("location: ../roles/dashboardadmin.php");
+$usuario = $db->consultarRegistro($sql, ['correo' => $correo]);
+echo password_hash($contrasena, PASSWORD_DEFAULT);
+if (!empty($usuario)) {
+    if (password_verify($contrasena, $usuario["contrasena"])) {
+        $_SESSION['usuario']['rol'] = $usuario['cargo'];
+        $_SESSION['usuario']['id_rol'] = $usuario['id_rol'];
+        $_SESSION['usuario']['nombre'] = $usuario['nombre'];
+        $_SESSION['usuario']['id'] =  $usuario['id_usuario'];
+        switch ($usuario['id_rol']) {
+            case '1':
+                header("location: dashboardadmin.php");
+                break;
+            case '2':
+                header("location: ../roles/dashboardjefe.php");
+                break;
+            case '3':
+                header("location: ../vista/dashboardcliente.php");
+                break;
+            default:
+                echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+                break;
+        }
     } else {
-        if ($rol == 2) {
-            $_SESSION['rol'] = 'Jefe de bodega';
-            $_SESSION['nombre'] = $nombre;
-            header("location: ../roles/dashboardjefe.php");
-        }
-
-        if ($rol == 4) {
-            $_SESSION['rol'] = 'Vendedor';
-            $_SESSION['nombre'] = $nombre;
-            header("location: ../roles/dashboardvendedor.php");
-        }
-
-        if ($rol == 3) {
-            $_SESSION['rol'] = 'cliente';
-            $_SESSION['nombre'] = $nombre;
-            $_SESSION['id'] = $id;
-            header("location: ../roles/dashboardcliente.php");
-        }
-        $_SESSION['rol'] = "usuario";
-        $_SESSION['usuario'] = $usuario['nombre'];
+        echo "Usuario o contraseña incorrectos.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
     }
-
-    //  header("Location: dashboard.php");
 } else {
-    echo "Usuario o contraseña incorrectos.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+    echo "El usuario no existe.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
 }
+die();
