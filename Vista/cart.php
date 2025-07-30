@@ -6,6 +6,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
 
 <body>
     <?php
+    $body = 5;
     include dirname(__DIR__) . '/vista/layout/topBar.php';
     include dirname(__DIR__) . '/vista/layout/navBar.php';
     ?>

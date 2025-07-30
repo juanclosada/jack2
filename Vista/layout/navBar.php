@@ -1,3 +1,22 @@
+<?php
+$home = $shop = $detail = $contact = $cart = '';
+switch ($body) {
+    case '2':
+        $shop = 'active';
+        break;
+    case '3':
+        $detail = 'active';
+        break;
+    case '4':
+        $contact = 'active';
+        break;
+    case '5':
+        $cart = 'active';
+        break;
+    default:
+        $home = 'active';
+        break;
+} ?>
 <!-- Navbar Start -->
 <div class="container-fluid bg-dark mb-30">
     <div class="row px-xl-5">
@@ -43,25 +62,25 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.php" class="nav-item nav-link active">Inicio</a>
-                        <a href="shop.php" class="nav-item nav-link">Tienda</a>
-                        <a href="detail.php" class="nav-item nav-link">Detalle de los Productos</a>
+                        <a href="index.php" class="nav-item nav-link <?php echo $home; ?>">Inicio</a>
+                        <a href="shop.php" class="nav-item nav-link <?php echo $shop; ?>">Nuestros productos</a>
                         <div class="nav-item dropdown">
-                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas <i class="fa fa-angle-down mt-1"></i></a>
+                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Quienes somos <i class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                <a href="cart.php" class="dropdown-item">Carrito de Compra</a>
-                                <a href="checkout.php" class="dropdown-item">Realizar Pagos</a>
+                                <a href="nosotros.php" class="dropdown-item">Sobre nosotros</a>
+                                <a href="mision.php" class="dropdown-item">Misión</a>
+                                <a href="vision.php" class="dropdown-item">Visión</a>
                             </div>
                         </div>
-                        <a href="Contact.php" class="nav-item nav-link">Contactenos</a>
+                        <a href="Contact.php" class="nav-item nav-link <?php echo $contact; ?>">Contacto</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                        <a href="" class="btn px-0">
+                        <!-- <a href="" class="btn px-0">
                             <i class="fas fa-heart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                        </a>
+                        </a> -->
                         <?php ?>
-                        <a href="" class="btn px-0 ml-3">
+                        <a href="cart.php" class="btn px-0 ml-3">
                             <i class="fas fa-shopping-cart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                         </a>

@@ -189,3 +189,8 @@ function redirecion()
             break;
     }
 }
+function sumarDescuento($precio)
+{
+    $descuento = $precio * 0.10; // 10% del precio
+    return $precio - $descuento;
+}
