@@ -16,6 +16,7 @@ if (!empty($usuario)) {
         $_SESSION['usuario']['id_rol'] = $usuario['id_rol'];
         $_SESSION['usuario']['nombre'] = $usuario['nombre'];
         $_SESSION['usuario']['id'] =  $usuario['id_usuario'];
+        $_SESSION['usuario']['correo'] =  $usuario['correo'];
         switch ($usuario['id_rol']) {
             case '1':
                 header("location: dashboardadmin.php");

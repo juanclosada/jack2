@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$msj = '';
+if (!empty($_GET['success'])) {
+    $msj = 'Formulario enviado correctamente! Gracias por tus comentarios.';
+}
+if (!empty($_SESSION['usuario']['id'])) {
+    $id = $_SESSION['usuario']['id'];
+    $correo = $_SESSION['usuario']['correo'];
+    $nombre = $_SESSION['usuario']['nombre'];
+} else {
+    $id = "";
+    $correo = "";
+    $nombre = '';
+}
 include_once dirname(__DIR__) . '/vista/layout/head.php';
 ?>
 
@@ -27,14 +44,19 @@ include_once dirname(__DIR__) . '/vista/layout/head.php';
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
-                    <div id="success"></div>
+                    <?php if ($msj != '') {
+                        echo "<div class='alert alert-success'>$msj</div>";
+                    } ?>
+
                     <form action="../modelo/enviarContacto.php" method="post" autocomplete="on">
                         <div class="control-group">
                             <input type="text" class="form-control mt-2" name="name" placeholder="Sus Nombres"
-                                required="required" />
+                                required="required" value="<?php echo $nombre; ?>" />
+                            <input type="text" class="form-control mt-2 d-none" name="id" placeholder=""
+                                required="" value="<?php echo $id; ?>" />
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control mt-2" name="email" placeholder="Su Correo"
+                            <input type="email" class="form-control mt-2" name="email" placeholder="Su Correo" value="<?php echo $correo; ?>"
                                 required="required" />
                         </div>
                         <div class="control-group">
