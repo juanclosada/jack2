@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include dirname(__DIR__) . '/vista/layout/head.php';
+include_once dirname(__DIR__) . '/vista/layout/head.php';
 ?>
 
 <body>
     <?php
     $body = 4;
-    include dirname(__DIR__) . '/vista/layout/topBar.php';
-    include dirname(__DIR__) . '/vista/layout/navBar.php';
+    include_once dirname(__DIR__) . '/vista/layout/topBar.php';
+    include_once dirname(__DIR__) . '/vista/layout/navBar.php';
     ?>
 
     <!-- Breadcrumb Start -->
@@ -28,21 +28,21 @@ include dirname(__DIR__) . '/vista/layout/head.php';
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
-                    <form action="../modelo/enviarContacto.php" autocomplete="on">
+                    <form action="../modelo/enviarContacto.php" method="post" autocomplete="on">
                         <div class="control-group">
-                            <input type="text" class="form-control mt-2" id="name" placeholder="Sus Nombres"
+                            <input type="text" class="form-control mt-2" name="name" placeholder="Sus Nombres"
                                 required="required" />
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control mt-2" id="email" placeholder="Su Correo"
+                            <input type="email" class="form-control mt-2" name="email" placeholder="Su Correo"
                                 required="required" />
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control mt-2" id="subject" placeholder="Asunto:"
+                            <input type="text" class="form-control mt-2" name="subject" placeholder="Asunto:"
                                 required="required" data-validation-required-message="Por favor ingrese su Asunto" />
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control mt-2" rows="8" id="message" placeholder="Mensaje"
+                            <textarea class="form-control mt-2" rows="8" name="message" placeholder="Mensaje"
                                 required="required"></textarea>
                         </div>
                         <div>
