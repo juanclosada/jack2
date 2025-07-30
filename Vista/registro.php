@@ -19,7 +19,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
         <form action="../controlador/controlador_registro_usuario.php" method="POST" class="form-register">
             <h4>Formulario de Registro</h4>
 
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="rol">Rol</label>
                 <select class="custom-select" name="rol" id="rol" required>
                     <option value="3" selected>Cliente</option>

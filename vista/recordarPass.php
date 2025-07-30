@@ -63,7 +63,7 @@ if (!empty($_SESSION['usuario'])) {
                 <button type="submit" class="btn btn-primary btn-block">Recuperar</button>
                 <div class="text-center mt-3">
                     <a href="login.php">Iniciar sesión</a>
-                    <a href="registro.php">¿No tienes una cuenta? Regístrate aquí"</a>
+                    <a href="registro.php">¿No tienes una cuenta? Regístrate aquí!</a>
                 </div>
             </form>
         </div>

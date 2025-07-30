@@ -1,32 +1,30 @@
 <?php
 
 include('conexion.php');
-
+$db = new Conexion();
 // Obtener datos del formulario
-$nombre = $_POST['nombre'];
-$correo = $_POST['correo'];
-$contrasena = $_POST['contrasena'];
+$datos['nombre'] = mb_strtoupper($_POST['nombre']) . ' ' . mb_strtoupper($_POST['apellido']);
+$datos["correo"] = $_POST['correo'];
+$datos["contrasena"] = $_POST['contrasena'];
 $contrasena1 = $_POST['contrasena1'];
-$id_rol = $_POST['rol'];
-
-if (strlen($contrasena) < 8) {
-    echo "La contraseña debe tener entre 8 y 20 caracteres. <a href='../vista/registro.php'>Registrar Nuevamente</a>";
-} else {
-
-    if ($contrasena == $contrasena1) {
-
-        // Las contraseñas coinciden, ahora se puede hashear
-        // Insertar en la base de datos
-        $sql = "INSERT INTO usuarios (nombre, correo, contrasena, id_rol) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $nombre, $correo, $contrasena, $id_rol);
-        if ($stmt->execute()) {
-
-            echo "Usuario registrado correctamente. <a href='../vista/login.php'>Iniciar sesión</a>";
-        } else {
-            echo "Error al registrar usuario: " . $conn->error;
-        }
+$datos["id_rol"] = $_POST['rol'];
+$user = $db->consultarRegistro('SELECT * FROM usuarios WHERE correo = :email', ['email' => $datos["correo"]]);
+if (!$user) {
+    if (strlen($datos["contrasena"]) < 8) {
+        echo "La contraseña debe tener entre 8 y 20 caracteres. <a href='../vista/registro.php'>Registrar Nuevamente</a>";
     } else {
-        echo "Las contraseñas no coinciden. <a href='vista/registro.php'>Registrar Nuevamente</a>";
+        if ($datos["contrasena"] == $contrasena1) {
+            $datos["contrasena"] = password_hash($datos["contrasena"], PASSWORD_DEFAULT);
+            $valid = $db->insertarRegistro('usuarios', $datos);
+            if (!$valid) {
+                echo "El usuario no se registro. <a href='vista/registro.php'>Registrar Nuevamente</a>";
+            } else {
+                echo "Usuario registrado correctamente. <a href='../vista/login.php'>Iniciar sesión</a>";
+            }
+        } else {
+            echo "Las contraseñas no coinciden. <a href='vista/registro.php'>Volver a intentar</a>";
+        }
     }
+} else {
+    echo "El usuario ya esta registrado. <a href='../vista/login.php'>Iniciar sesión</a>";
 }

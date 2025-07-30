@@ -51,7 +51,10 @@ if (!empty($_SESSION['usuario'])) {
     <div class="container login-container d-flex align-items-center justify-content-center mt-5">
         <div class="login-box">
             <h4 class="text-center mb-4">Iniciar Sesión</h4>
-            <?php echo '<div class="alert alert-dark">' . $error . '</div>'; ?>
+            <?php if ($error != '') {
+                echo '<div class="alert alert-dark">' . $error . '</div>';
+            }
+            ?>
             <form action="../controlador/validar_login.php" method="POST" novalidate>
                 <div class="form-group">
                     <label for="correo">Correo</label>
