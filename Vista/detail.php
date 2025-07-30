@@ -2,6 +2,10 @@
 <html lang="en">
 <?php
 include dirname(__DIR__) . '/vista/layout/head.php';
+include_once '../controlador/conexion.php';
+$db = new Conexion();
+$id = empty($_GET['id']) ? '' : base64_decode($_GET['id']);
+$producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = '$id'");
 ?>
 
 <body>
@@ -30,34 +34,40 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
         <div class="row px-xl-5">
-            <div class="col-lg-5 mb-30">
-                <div id="product-carousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner bg-light">
-                        <div class="carousel-item active">
-                            <img class="w-100 h-100" src="img/escritorio 2.jpg" alt="Image">
+            <?php if (empty($producto)) {
+                echo "<h4>No se encontró el producto.<h4/>";
+            } else { ?>
+                <div class="col-lg-5 mb-30">
+                    <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner bg-light">
+                            <div class="carousel-item active">
+                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/mesa de centro 10.jpg" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/armario 2.jpg" alt="Image">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100 h-100" src="img/sofa 6.jpg" alt="Image">
-                        </div>
+                        <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                            <i class="fa fa-2x fa-angle-left text-dark"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                            <i class="fa fa-2x fa-angle-right text-dark"></i>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
-                        <i class="fa fa-2x fa-angle-left text-dark"></i>
-                    </a>
-                    <a class="carousel-control-next" href="#product-carousel" data-slide="next">
-                        <i class="fa fa-2x fa-angle-right text-dark"></i>
-                    </a>
                 </div>
-            </div>
+            <?php } ?>
+
+
 
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3>Muebles</h3>
+                    <h3><?php echo $producto['nombre'] ?></h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -66,12 +76,12 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                             <small class="fas fa-star-half-alt"></small>
                             <small class="far fa-star"></small>
                         </div>
-                        <small class="pt-1">(99 Reviews)</small>
+                        <small class="pt-1">(<?php echo rand(10, 99); ?> Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">$150.000</h3>
-                    <p class="mb-4">Elige el producto que mas te guste</p>
+                    <h3 class="font-weight-semi-bold mb-4">$<?php echo number_format($producto['precio']); ?></h3>
+                    <!-- <p class="mb-4">Elige el producto que mas te guste</p> -->
 
-                    <div class="d-flex mb-4">
+                    <!-- <div class="d-flex mb-4">
                         <strong class="text-dark mr-3">Colors:</strong>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -103,24 +113,34 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                 <label class="custom-control-label" for="color-7">Beige</label>
                             </div>
                         </form>
-                    </div>
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
+                    </div> -->
+                    <form action="../modelo/agregar_carrito.php" method="post">
+                        <div class="d-flex align-items-center mb-4 pt-2">
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <!-- <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-minus">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div> -->
+                                <input type="number" name="cantidad" class="form-control bg-secondary border-0 text-center" value="1" min="1" required>
+                                <input type="hidden" name="producto_id" value="<?= $producto['id_producto'] ?>">
+                                <!-- <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-plus">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div> -->
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Agregar al carrito de Compras</button>
-                    </div>
-                    <div class="d-flex pt-2">
+                            <?php
+                            if (empty($_SESSION['usuario']['id'])) {
+                                echo '<a href="login.php" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Agregar al carrito de Compras</a>';
+                            } else {
+                                echo '<button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Agregar al carrito de Compras</button>';
+                            }
+                            ?>
+                    </form>
+
+                </div>
+                <!-- <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Compartir en:</strong>
                         <div class="d-inline-flex">
                             <a class="text-dark px-2" href="">
@@ -136,108 +156,107 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                 <i class="fab fa-pinterest"></i>
                             </a>
                         </div>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="bg-light p-30">
+                <div class="nav nav-tabs mb-4">
+                    <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Descripción del Producto</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Información</a>
+                    <!-- <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reseñas (1)</a> -->
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane-1">
+                        <h4 class="mb-3">Descripción del Producto</h4>
+                        <p><?php echo $producto['descripcion'] ?></p>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-2">
+                        <h4 class="mb-3">Información Adicional</h4>
+                        <p>¿Cuáles son los tipos de muebles? Existe una gran variedad de tipos de muebles para cada ambiente de tu hogar. Entre estos se encuentran: muebles de dormitorio, muebles de oficina y escritorio, muebles de sala y comedor, muebles de cocina, muebles para baño, muebles de terraza, entre otros.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0">
+                                        1. Clasificación de muebles por Funcionalidad:
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        3. Muebles de Dormitorio: Camas, mesitas, cómodas.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        5. Muebles de Oficina: Escritorios, sillas ergonómicas, archivadores.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0">
+                                        2. Muebles de Sala: Sofás, sillones, mesas de centro.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        4. Muebles de Cocina y Comedor: Mesas, sillas.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="mb-4">1 Reseña Sobre "sillas"</h4>
+                                <div class="media mb-4">
+                                    <div class="media-body">
+                                        <h6>John Doe<small> - <i>01 Febrero 2025</i></small></h6>
+                                        <div class="text-primary mb-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <p>Naturalmente, hay que buscar las sillas de salón adecuadas para la habitación en la que se van a pasar bastantes momentos y recuerdos memorables. Los muebles adecuados son los que hacen que sea aún más cómodo pasar el tiempo en ellos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="mb-4">Deja tu comentario</h4>
+                                <small>Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados *</small>
+                                <div class="d-flex my-3">
+                                    <p class="mb-0 mr-2">Tu valoración * :</p>
+                                    <div class="text-primary">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="message">Su opinión *</label>
+                                        <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Su Nombre *</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Su correo electronco *</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row px-xl-5">
-            <div class="col">
-                <div class="bg-light p-30">
-                    <div class="nav nav-tabs mb-4">
-                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Descripción del Producto</a>
-                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Información</a>
-                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reseñas (1)</a>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="tab-pane-1">
-                            <h4 class="mb-3">Descripción del Producto</h4>
-                            <p>objeto fabricado con material resistente, diseñado para cumplir una o varias funciones específicas, como comer, dormir, almacenar, entre otras.</p>
-                            <p>Un mueble de buena calidad debe ser estructuralmente sólido, sólido y bien construido para garantizar su uso prolongado a lo largo de los años. Debe sentirse seguro al sentarse o apoyarse en él, y no debe notar ninguna oscilación, deformación ni flexión.</p>
-                        </div>
-                        <div class="tab-pane fade" id="tab-pane-2">
-                            <h4 class="mb-3">Información Adicional</h4>
-                            <p>¿Cuáles son los tipos de muebles? Existe una gran variedad de tipos de muebles para cada ambiente de tu hogar. Entre estos se encuentran: muebles de dormitorio, muebles de oficina y escritorio, muebles de sala y comedor, muebles de cocina, muebles para baño, muebles de terraza, entre otros.</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item px-0">
-                                            1. Clasificación de muebles por Funcionalidad:
-                                        </li>
-                                        <li class="list-group-item px-0">
-                                            3. Muebles de Dormitorio: Camas, mesitas, cómodas.
-                                        </li>
-                                        <li class="list-group-item px-0">
-                                            5. Muebles de Oficina: Escritorios, sillas ergonómicas, archivadores.
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item px-0">
-                                            2. Muebles de Sala: Sofás, sillones, mesas de centro.
-                                        </li>
-                                        <li class="list-group-item px-0">
-                                            4. Muebles de Cocina y Comedor: Mesas, sillas.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="tab-pane-3">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4 class="mb-4">1 Reseña Sobre "sillas"</h4>
-                                    <div class="media mb-4">
-                                        <div class="media-body">
-                                            <h6>John Doe<small> - <i>01 Febrero 2025</i></small></h6>
-                                            <div class="text-primary mb-2">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                            <p>Naturalmente, hay que buscar las sillas de salón adecuadas para la habitación en la que se van a pasar bastantes momentos y recuerdos memorables. Los muebles adecuados son los que hacen que sea aún más cómodo pasar el tiempo en ellos.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4 class="mb-4">Deja tu comentario</h4>
-                                    <small>Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados *</small>
-                                    <div class="d-flex my-3">
-                                        <p class="mb-0 mr-2">Tu valoración * :</p>
-                                        <div class="text-primary">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="message">Su opinión *</label>
-                                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">Su Nombre *</label>
-                                            <input type="text" class="form-control" id="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Su correo electronco *</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                        <div class="form-group mb-0">
-                                            <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
     <!-- Shop Detail End -->
 
