@@ -66,6 +66,7 @@ if (!empty($_SESSION['usuario'])) {
                 <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                 <div class="text-center mt-3">
                     <a href="#">¿Olvidó su contraseña?</a>
+                    <a href="registro.php">Si no tienes una cuenta registrate aquí</a>
                 </div>
             </form>
         </div>
