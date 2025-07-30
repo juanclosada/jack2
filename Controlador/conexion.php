@@ -11,6 +11,8 @@ class Conexion
     {
         if ($include == 'S') {
             require_once '../config/config.php';
+        } else {
+            require_once '../../config/config.php';
         }
     }
 
