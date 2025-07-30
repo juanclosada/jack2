@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visión - Industria Alcobas 2Jack</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .encabezado {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .logo span {
+      display: inline-block;
+      padding: 5px 10px;
+    }
+
+    .logo .oscuro {
+      background-color: #37474f;
+      color: #ffc107;
+    }
+
+    .logo .amarillo {
+      background-color: #ffc107;
+      color: #37474f;
+    }
+
+    .busqueda {
+      margin-top: 15px;
+    }
+
+    .busqueda input {
+      padding: 5px;
+      width: 220px;
+      border: 1px solid #ccc;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .busqueda button {
+      padding: 6px 10px;
+      background-color: #ffc107;
+      border: none;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .contenido {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.08);
+    }
+
+    .contenido h1 {
+      color: #37474f;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .contenido p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+    }
+
+    footer {
+      background-color: #37474f;
+      color: white;
+      padding: 40px 20px 10px 20px;
+    }
+
+    .footer-contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col {
+      flex: 1 1 250px;
+      margin: 10px;
+    }
+
+    .footer-col h5 {
+      color: #ffc107;
+      margin-bottom: 15px;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #ddd;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-col i {
+      margin-right: 10px;
+    }
+
+    .redes-sociales a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 8px;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .busqueda input {
+        width: 60%;
+      }
+
+      .footer-contenedor {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-col {
+        margin-bottom: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <div class="encabezado">
+    <div class="logo">
+      <span class="oscuro">INDUSTRIA</span><span class="amarillo">ALCOBAS</span><br>
+      <span class="oscuro">2JACK</span>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
+  <section class="contenido">
+    <h1>Nuestra Visión</h1>
+    <p>
+      En <strong>Industria Alcobas 2Jack</strong> aspiramos a ser reconocidos a nivel nacional e internacional como una empresa líder en diseño y fabricación de muebles para el hogar. 
+      Nuestra visión es convertirnos en un referente de innovación, calidad y responsabilidad ambiental, ampliando nuestra presencia en el mercado y manteniendo el compromiso con nuestros clientes. 
+      Queremos transformar cada hogar colombiano en un espacio único, funcional y lleno de estilo, elevando la experiencia del mobiliario personalizado.
+    </p>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="footer-contenedor">
+      <div class="footer-col">
+        <h5>CONTÁCTANOS</h5>
+        <p>Somos una empresa líder en diseño de muebles futuristas. Si puedes soñarlo, nosotros podemos crearlo.</p>
+        <p><i class="fas fa-map-marker-alt"></i> Calle 138 #54C-40, Bogotá, Colombia</p>
+        <p><i class="fas fa-envelope"></i> info@industria2jack.com</p>
+        <p><i class="fas fa-phone"></i> +57 603520236</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>SÍGUENOS</h5>
+        <div class="redes-sociales">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>INFORMACIÓN</h5>
+        <p>Diseñamos muebles a la medida con los más altos estándares de calidad. ¡Descubre nuestro catálogo!</p>
+        <p><a href="#"><i class="fa fa-angle-right"></i> Contáctanos</a></p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Industria #Jack. Todos los derechos reservados
+    </div>
+  </footer>
+
+</body>
+</html>
