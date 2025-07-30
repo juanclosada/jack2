@@ -37,7 +37,12 @@ $body = 6;
         <!-- Shop Start -->
         <div class="container-fluid">
             <div class="row px-xl-5">
-                <div class="table-responsive">
+               <?php if (empty($facturas)) { ?>
+                <h5 class='text-center'>No hay compras registradas</h5>
+               
+                <?php
+               }else {?>
+            <div class="table-responsive">
                     <table class="table table-bordered table-striped text-dark">
                         <thead class="table-success">
                             <tr>
@@ -66,6 +71,8 @@ $body = 6;
                     </table>
                 </div>
             </div>
+             <?php  } ?>
+            
         </div>
         <!-- Shop End -->
 

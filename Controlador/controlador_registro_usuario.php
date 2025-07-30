@@ -30,7 +30,3 @@ if (strlen($contrasena) < 8) {
         echo "Las contraseñas no coinciden. <a href='vista/registro.php'>Registrar Nuevamente</a>";
     }
 }
-
-
-
-$conn->close();
