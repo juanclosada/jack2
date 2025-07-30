@@ -176,7 +176,7 @@ function redirecion()
 {
     switch ($_SESSION['usuario']['id_rol']) {
         case '1':
-            header("location: dashboardadmin.php");
+            header("location: ../vista/dashboardadmin.php");
             break;
         case '2':
             header("location: ../roles/dashboardjefe.php");

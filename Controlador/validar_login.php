@@ -19,10 +19,7 @@ if (!empty($usuario)) {
         $_SESSION['usuario']['correo'] =  $usuario['correo'];
         switch ($usuario['id_rol']) {
             case '1':
-                header("location: dashboardadmin.php");
-                break;
-            case '2':
-                header("location: ../roles/dashboardjefe.php");
+                header("location: ../vista/admin/dashboardadmin.php");
                 break;
             case '3':
                 header("location: ../vista/index.php");

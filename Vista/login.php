@@ -22,7 +22,7 @@ if (!empty($_GET['error'])) {
 if (!empty($_SESSION['usuario'])) {
     switch ($_SESSION['usuario']['id_rol']) {
         case '1':
-            header("location: dashboardadmin.php");
+            header("location: ../vista/admin/dashboardadmin.php");
             break;
         case '2':
             header("location: ../roles/dashboardjefe.php");
