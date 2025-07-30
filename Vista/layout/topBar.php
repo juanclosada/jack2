@@ -34,33 +34,6 @@
           <div class="dropdown-menu dropdown-menu-right">
           </div>
         </div>
-        <!-- <div class="btn-group mx-2">
-          <button
-            type="button"
-            class="btn btn-sm btn-light dropdown-toggle"
-            data-toggle="dropdown">
-            Pagos
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="button">COP</button>
-            <button class="dropdown-item" type="button">EUR</button>
-            <button class="dropdown-item" type="button">VOB</button>
-            <button class="dropdown-item" type="button">USD</button>
-          </div>
-        </div> -->
-        <!-- <div class="btn-group">
-          <button
-            type="button"
-            class="btn btn-sm btn-light dropdown-toggle"
-            data-toggle="dropdown">
-            ES
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="button">FR</button>
-            <button class="dropdown-item" type="button">PORT</button>
-            <button class="dropdown-item" type="button">EN</button>
-          </div>
-        </div> -->
       </div>
       <div class="d-inline-flex align-items-center d-block d-lg-none">
         <a href="" class="btn px-0 ml-2">
@@ -87,19 +60,6 @@
       </a>
     </div>
     <div class="col-lg-4 col-6 text-left">
-      <!-- <form action="">
-        <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Buscar productos" />
-          <div class="input-group-append">
-            <span class="input-group-text bg-transparent text-primary">
-              <i class="fa fa-search"></i>
-            </span>
-          </div>
-        </div>
-      </form> -->
     </div>
     <div class="col-lg-4 col-6 text-right">
       <p class="m-0">Servicio al Cliente</p>
