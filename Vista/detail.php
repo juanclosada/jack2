@@ -243,7 +243,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
 
 
     <!-- Products Start -->
-    <div class="container-fluid py-5">
+    <!-- <div class="container-fluid py-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">También te puede interesar</span></h2>
         <div class="row px-xl-5">
             <div class="col">
@@ -381,7 +381,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Products End -->
     <?php
     include dirname(__DIR__) . '/vista/layout/footer.php';

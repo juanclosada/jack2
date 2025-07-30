@@ -2,6 +2,7 @@
 $home = $shop = $detail = $contact = $cart = '';
 switch ($body) {
     case '2':
+    case '3':
         $shop = 'active';
         break;
     case '4':

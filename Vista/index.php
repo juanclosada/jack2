@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include dirname(__DIR__) . '/vista/layout/head.php';
+include_once dirname(__DIR__) . '/vista/layout/head.php';
 include_once '../controlador/conexion.php';
 
 $db = new Conexion();
