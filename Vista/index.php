@@ -249,7 +249,7 @@ $destacados = $db->consultarRegistros2('SELECT * FROM productos WHERE stock > 1 
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small class="fa fa-star text-primary mr-1"></small>
                                 <small class="fa fa-star text-primary mr-1"></small>
-                                <small>(99)</small>
+                                <small>(<?php echo rand(10, 99); ?>)</small>
                             </div>
                         </div>
                     </div>
@@ -265,7 +265,7 @@ $destacados = $db->consultarRegistros2('SELECT * FROM productos WHERE stock > 1 
         <div class="row px-xl-5">
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
-                    <img class="img-fluid" src="img/mesa_de_noche10.jpg" alt="">
+                    <img class="img-fluid" src="img/salahome.jpg" alt="">
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase">Ahorra 20%</h6>
                         <h3 class="text-white mb-3">Oferta especial</h3>
