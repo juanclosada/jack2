@@ -190,17 +190,17 @@ $producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = 
                                         1. Clasificación de muebles por Funcionalidad:
                                     </li>
                                     <li class="list-group-item px-0">
-                                        3. Muebles de Dormitorio: Camas, mesitas, cómodas.
+                                        3. Muebles de Dormitorio: Camas, Mesitas, Cómodas.
                                     </li>
                                     <li class="list-group-item px-0">
-                                        5. Muebles de Oficina: Escritorios, sillas ergonómicas, archivadores.
+                                        5. Muebles de Oficina: Escritorios, Sillas ergonómicas, Archivadores.
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item px-0">
-                                        2. Muebles de Sala: Sofás, sillones, mesas de centro.
+                                        2. Muebles de Sala: Sofás, sillones, Mesas de centro.
                                     </li>
                                     <li class="list-group-item px-0">
                                         4. Muebles de Cocina y Comedor: Mesas, sillas.
@@ -212,7 +212,7 @@ $producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = 
                     <div class="tab-pane fade" id="tab-pane-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="mb-4">1 Reseña Sobre "sillas"</h4>
+                                <h4 class="mb-4">1 Reseña Sobre "Sillas"</h4>
                                 <div class="media mb-4">
                                     <div class="media-body">
                                         <h6>John Doe<small> - <i>01 Febrero 2025</i></small></h6>
