@@ -9,11 +9,9 @@ $error = '';
 if (!empty($_GET['error'])) {
     switch ($_GET['error']) {
         case '1':
-            # code...
             $error = '<span class="text-dark mb-2 pb-2">Por favor inicia sesión para poder continuar con tu compra:</span>';
             break;
         case '3':
-            # code...
             $error = '<span class="text-dark mb-2 pb-2">La nueva clave de acceso fue enviado a su correo electrónico.</span>';
             break;
         default:
