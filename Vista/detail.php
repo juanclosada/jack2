@@ -3,6 +3,13 @@
 <?php
 include dirname(__DIR__) . '/vista/layout/head.php';
 include_once '../controlador/conexion.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION['usuario']['id'])) {
+    header("Location: login.php?error=1");
+    exit();
+}
 $db = new Conexion();
 $id = empty($_GET['id']) ? '' : base64_decode($_GET['id']);
 $producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = '$id'");
@@ -41,17 +48,17 @@ $producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = 
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner bg-light">
                             <div class="carousel-item active">
-                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" style="max-height:600px" alt="Image">
                             </div>
-                            <div class="carousel-item">
+                            <!-- <div class="carousel-item"> -->
+                            <!-- <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image"> -->
+                            <!-- </div> -->
+                            <!-- <div class="carousel-item">
                                 <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
-                            </div>
-                            <div class="carousel-item">
+                            </div> -->
+                            <!-- <div class="carousel-item">
                                 <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
-                            </div>
+                            </div> -->
                         </div>
                         <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                             <i class="fa fa-2x fa-angle-left text-dark"></i>

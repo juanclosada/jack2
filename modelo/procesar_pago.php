@@ -22,6 +22,7 @@ $query = $db->actualizarRegistro('factura', [
 $db->actualizarRegistro('carrito', ['estado' => 2], ['factura_id' => $factura['id']]);
 //
 if ($query) {
+    $_SESSION['car'] = 0;
     header("location: ../vista/ReporteFactura.php?factura_id=" . base64_encode($factura['id']));
 } else {
     echo "Error al crear la factura.";

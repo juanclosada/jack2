@@ -1,17 +1,32 @@
 <?php
-$home = $shop = $detail = $contact = $cart = '';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$home = $shop = $detail = $contact = $cart = $compras = '';
 switch ($body) {
     case '2':
     case '3':
+    case '5':
         $shop = 'active';
         break;
     case '4':
         $contact = 'active';
         break;
+    case '6':
+        $compras = 'active';
+        break;
     default:
         $home = 'active';
         break;
-} ?>
+}
+// include_once dirname(__DIR__) . '/vista/layout/head.php';
+include_once '../controlador/conexion.php';
+$db = new Conexion();
+$factura = [];
+if (!empty($_SESSION['usuario']['id'])) {
+    $factura = $db->consultarRegistro('SELECT * FROM factura WHERE usuario_id  = :id', ['id' => $_SESSION['usuario']['id']]);
+}
+?>
 <!-- Navbar Start -->
 <div class="container-fluid bg-dark mb-30">
     <div class="row px-xl-5">
@@ -67,6 +82,9 @@ switch ($body) {
                                 <a href="vision.php" class="dropdown-item">Visión</a>
                             </div>
                         </div>
+                        <?php if (!empty($factura)) {
+                            echo '<a href="compras.php" class="nav-item nav-link ' . $compras . '">Compras</a>';
+                        } ?>
                         <a href="Contact.php" class="nav-item nav-link <?php echo $contact; ?>">Contacto</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">

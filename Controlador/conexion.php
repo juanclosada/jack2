@@ -194,3 +194,22 @@ function sumarDescuento($precio)
     $descuento = $precio * 0.10; // 10% del precio
     return $precio - $descuento;
 }
+function formaPago($id)
+{
+    switch ($id) {
+        case '1':
+            $txt = 'Tarjeta de Crédito';
+            break;
+        case '2':
+            $txt = 'Tarjeta Débito';
+            break;
+        case '3':
+            $txt = 'Nequi';
+            break;
+
+        default:
+            $txt = 'N/A';
+            break;
+    }
+    return $txt;
+}

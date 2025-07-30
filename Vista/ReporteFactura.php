@@ -107,7 +107,7 @@ $productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM 
             <button class="btn btn-primary" onclick="window.print()">
                 🖨️ Imprimir factura
             </button>
-            <a href="login.php" class="btn btn-secondary">
+            <a href="compras.php" class="btn btn-secondary">
                 Volver
                 </button>
         </div>
