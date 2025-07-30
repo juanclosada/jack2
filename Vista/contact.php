@@ -28,30 +28,25 @@ include dirname(__DIR__) . '/vista/layout/head.php';
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
                     <div id="success"></div>
-                    <form name="Envió de Mensaje" id="contactForm" novalidate="novalidate">
+                    <form action="../modelo/enviarContacto.php" autocomplete="on">
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Sus Nombres"
-                                required="required" data-validation-required-message="POr favor escriba su Nombre" />
-                            <p class="help-block text-danger"></p>
+                            <input type="text" class="form-control mt-2" id="name" placeholder="Sus Nombres"
+                                required="required" />
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="Su Correo"
-                                required="required" data-validation-required-message="Por Favor Ingrese su Correo" />
-                            <p class="help-block text-danger"></p>
+                            <input type="email" class="form-control mt-2" id="email" placeholder="Su Correo"
+                                required="required" />
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Asunto:"
+                            <input type="text" class="form-control mt-2" id="subject" placeholder="Asunto:"
                                 required="required" data-validation-required-message="Por favor ingrese su Asunto" />
-                            <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="8" id="message" placeholder="Mensaje"
-                                required="required"
-                                data-validation-required-message="Por favor Ingrese su Mensaje"></textarea>
-                            <p class="help-block text-danger"></p>
+                            <textarea class="form-control mt-2" rows="8" id="message" placeholder="Mensaje"
+                                required="required"></textarea>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">Envie su Mensaje</button>
+                            <button class="btn btn-primary py-2 px-4 mt-2" type="submit" id="sendMessageButton">Envie su Mensaje</button>
                         </div>
                     </form>
                 </div>

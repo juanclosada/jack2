@@ -5,7 +5,7 @@ include_once dirname(__DIR__) . '/vista/layout/head.php';
 include_once '../controlador/conexion.php';
 
 $db = new Conexion();
-$destacados = $db->consultarRegistros2('SELECT * FROM productos WHERE stock > 0 LIMIT 16');
+$destacados = $db->consultarRegistros2('SELECT * FROM productos WHERE stock > 0 LIMIT 16 OFFSET 2');
 ?>
 
 <body>
