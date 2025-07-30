@@ -7,13 +7,13 @@ include_once('../../controlador/conexion.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$formatter = new IntlDateFormatter(
-    'es_CO', // idioma local
-    IntlDateFormatter::FULL, // fecha completa (ej: miércoles, 30 de julio de 2025)
-    IntlDateFormatter::SHORT, // hora corta (ej: 9:38 p. m.)
-    'America/Bogota',
-    IntlDateFormatter::GREGORIAN
-);
+// $formatter = new IntlDateFormatter(
+//     'es_CO', // idioma local
+//     IntlDateFormatter::FULL, // fecha completa (ej: miércoles, 30 de julio de 2025)
+//     IntlDateFormatter::SHORT, // hora corta (ej: 9:38 p. m.)
+//     'America/Bogota',
+//     IntlDateFormatter::GREGORIAN
+// );
 $home = 'active';
 $produc = $user = '';
 if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1) {
@@ -34,7 +34,9 @@ $comentarios = $db->contarRegistros('contactos');
     <!-- start section -->
     <div class="container">
         <h4>Bienvenido <?php echo $_SESSION['usuario']['nombre']; ?></h4>
-        <p><?php echo $formatter->format(new DateTime()) ?></p>
+        <p><?php 
+            //echo $formatter->format(new DateTime()) 
+            ?></p>
         <span class="text-dark mb-5">Resumen</span>
         <div class="table-responsive mt-3">
             <table class="table">
