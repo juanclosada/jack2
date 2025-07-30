@@ -7,7 +7,19 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $error = '';
 if (!empty($_GET['error'])) {
-    $error = '<span class="text-dark mb-2 pb-2">Por favor inicia sesión para poder continuar con tu compra:</span>';
+    switch ($_GET['error']) {
+        case '1':
+            # code...
+            $error = '<span class="text-dark mb-2 pb-2">Por favor inicia sesión para poder continuar con tu compra:</span>';
+            break;
+        case '3':
+            # code...
+            $error = '<span class="text-dark mb-2 pb-2">La nueva clave de acceso fue enviado a su correo electrónico.</span>';
+            break;
+        default:
+            $error = '';
+            break;
+    }
 }
 if (!empty($_SESSION['usuario'])) {
     switch ($_SESSION['usuario']['id_rol']) {
@@ -41,7 +53,7 @@ if (!empty($_SESSION['usuario'])) {
     <div class="container login-container d-flex align-items-center justify-content-center mt-5">
         <div class="login-box">
             <h4 class="text-center mb-4">Iniciar Sesión</h4>
-            <?php echo $error; ?>
+            <?php echo '<div class="alert alert-dark">' . $error . '</div>'; ?>
             <form action="../controlador/validar_login.php" method="POST" novalidate>
                 <div class="form-group">
                     <label for="correo">Correo</label>
@@ -60,13 +72,18 @@ if (!empty($_SESSION['usuario'])) {
                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         </div>
                         <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-warning" type="button" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="icono-ojo"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                 <div class="text-center mt-3">
-                    <a href="#">¿Olvidó su contraseña?</a>
-                    <a href="registro.php">¿No tienes una cuenta? Regístrate aquí"</a>
+                    <a href="recordarPass.php">¿Olvidó su contraseña?</a>
+                    <a href="registro.php">¿No tienes una cuenta? Regístrate aquí!</a>
                 </div>
             </form>
         </div>
@@ -79,5 +96,21 @@ if (!empty($_SESSION['usuario'])) {
 <?php
 include dirname(__DIR__) . '/vista/layout/script.php';
 ?>
+<script>
+    function togglePassword() {
+        const input = document.getElementById("contrasena");
+        const icono = document.getElementById("icono-ojo");
+
+        if (input.type === "password") {
+            input.type = "text";
+            icono.classList.remove("fa-eye");
+            icono.classList.add("fa-eye-slash");
+        } else {
+            input.type = "password";
+            icono.classList.remove("fa-eye-slash");
+            icono.classList.add("fa-eye");
+        }
+    }
+</script>
 
 </html>
