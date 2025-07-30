@@ -15,11 +15,9 @@ if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1
 ?>
 
 <body>
-    <!-- <?php include dirname(__DIR__) . '/admin/layout/topBar.php'; ?> -->
+    <?php include dirname(__DIR__) . '/admin/layout/topBar.php'; ?>
 </body>
-<?php
-include dirname(__DIR__) . '/admin/layout/script.php';
-?>
+
 <!-- Navbar Start -->
 <div class="container-fluid bg-dark mb-30">
     <div class="row px-xl-5">
@@ -47,5 +45,11 @@ include dirname(__DIR__) . '/admin/layout/script.php';
     </div>
 </div>
 <!-- Navbar End -->
+<?php
+include dirname(__DIR__) . '/admin/layout/footer.php';
+?>
 
 </html>
+<?php
+include dirname(__DIR__) . '/admin/layout/script.php';
+?>
