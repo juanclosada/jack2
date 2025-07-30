@@ -23,8 +23,8 @@
             session_start();
           }
           if (empty($_SESSION['usuario']['id'])) {
-            echo '<a href="login.php" class="btn btn-light">Inicio de Sesión</a>';
-            echo '<a href="registro.php" class="btn btn-light">Registrese Aqui</a>';
+            echo '<a href="login.php" class="btn btn-warning">Inicio de Sesión</a>';
+            echo '<a href="registro.php" class="btn btn-light">Registrete Aquí</a>';
           } else {
             echo '<a href="logout.php" class="btn btn-light">Salir</a>';
           }
@@ -86,7 +86,7 @@
       </a>
     </div>
     <div class="col-lg-4 col-6 text-left">
-      <form action="">
+      <!-- <form action="">
         <div class="input-group">
           <input
             type="text"
@@ -98,7 +98,7 @@
             </span>
           </div>
         </div>
-      </form>
+      </form> -->
     </div>
     <div class="col-lg-4 col-6 text-right">
       <p class="m-0">Servicio al Cliente</p>

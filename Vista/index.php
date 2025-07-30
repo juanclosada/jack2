@@ -2,6 +2,11 @@
 <html lang="en">
 <?php
 include dirname(__DIR__) . '/vista/layout/head.php';
+include_once '../controlador/conexion.php';
+
+$db = new Conexion();
+$destacados = $db->consultarRegistros('SELECT * FROM productos WHERE stock > 1 LIMIT 20');
+mostrar($destacados);
 ?>
 
 <body>
@@ -41,7 +46,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
     <!-- Featured End -->
 
     <!-- Categories Start -->
-    <div class="container-fluid pt-5">
+    <!-- <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categorias</span></h2>
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
@@ -57,7 +62,6 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                     </div>
                 </a>
                 <div id="mesas-de-noche" class="collapse">
-                    <!-- Opciones desplegables -->
                     <ul>
                         <div>
                             <li><a href=""><img class="img-fluid w-200" src="" alt="img/mesa_de_noche7.jpg"></a></li>
@@ -212,7 +216,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Categories End -->
 
 
