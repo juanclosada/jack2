@@ -4,18 +4,19 @@
 
 include_once '../controlador/conexion.php';
 
-include dirname(__DIR__) . '/vista/layout/head.php';
+include_once dirname(__DIR__) . '/vista/layout/head.php';
 ?>
 
 <body>
     <?php
-    include dirname(__DIR__) . '/vista/layout/topBar.php';
-    include dirname(__DIR__) . '/vista/layout/navBar.php';
+    $body = '3';
+    include_once dirname(__DIR__) . '/vista/layout/topBar.php';
+    include_once dirname(__DIR__) . '/vista/layout/navBar.php';
     ?>
     <?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+    // if (session_status() === PHP_SESSION_NONE) {
+    //     session_start();
+    // }
 
     if (empty($_SESSION['usuario']['id'])) {
         header("Location: login.php");
@@ -155,8 +156,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                     </div>
 
                     <div class="text-end">
-                        <a href="dashboardcliente.php" class="btn btn-outline-primary">🛍️ Seguir comprando</a>
-                        <a href="logout.php" class="btn btn-outline-danger">Cerrar sesión</a>
+                        <a href="shop.php" class="btn btn-primary">🛍️ Seguir comprando</a>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-warning">

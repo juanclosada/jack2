@@ -5,6 +5,10 @@ include dirname(__DIR__) . '/vista/layout/head.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$error = '';
+if (!empty($_GET['error'])) {
+    $error = '<span class="text-dark mb-2 pb-2">Por favor inicia sesión para poder continuar con tu compra:</span>';
+}
 if (!empty($_SESSION['usuario'])) {
     switch ($_SESSION['usuario']['id_rol']) {
         case '1':
@@ -14,7 +18,7 @@ if (!empty($_SESSION['usuario'])) {
             header("location: ../roles/dashboardjefe.php");
             break;
         case '3':
-            header("location: ../vista/dashboardcliente.php");
+            header("location: ../vista/index.php");
             break;
         default:
             echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
@@ -37,6 +41,7 @@ if (!empty($_SESSION['usuario'])) {
     <div class="container login-container d-flex align-items-center justify-content-center mt-5">
         <div class="login-box">
             <h4 class="text-center mb-4">Iniciar Sesión</h4>
+            <?php echo $error; ?>
             <form action="../controlador/validar_login.php" method="POST" novalidate>
                 <div class="form-group">
                     <label for="correo">Correo</label>

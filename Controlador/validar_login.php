@@ -24,7 +24,7 @@ if (!empty($usuario)) {
                 header("location: ../roles/dashboardjefe.php");
                 break;
             case '3':
-                header("location: ../vista/dashboardcliente.php");
+                header("location: ../vista/index.php");
                 break;
             default:
                 echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";

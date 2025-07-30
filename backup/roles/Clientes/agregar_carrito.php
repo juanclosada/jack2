@@ -12,4 +12,4 @@ $usuario_id = $_SESSION['id'];
 
 $conn->query("INSERT INTO carrito (usuario_id, producto_id, cantidad) 
                   VALUES ($usuario_id, $producto_id, $cantidad)");
-header("Location: ../dashboardcliente.php");
+header("Location: ../cart.php");

@@ -182,7 +182,7 @@ function redirecion()
             header("location: ../roles/dashboardjefe.php");
             break;
         case '3':
-            header("location: ../vista/dashboardcliente.php");
+            header("location: ../vista/cart.php");
             break;
         default:
             echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
