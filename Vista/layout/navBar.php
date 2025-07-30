@@ -4,14 +4,8 @@ switch ($body) {
     case '2':
         $shop = 'active';
         break;
-    case '3':
-        $detail = 'active';
-        break;
     case '4':
         $contact = 'active';
-        break;
-    case '5':
-        $cart = 'active';
         break;
     default:
         $home = 'active';

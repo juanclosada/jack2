@@ -25,7 +25,7 @@
         <div class="col-lg-4 col-md-12 mb-5">
             <h5 class="text-uppercase text-primary mb-4">Información</h5>
             <p class="text-light">Diseñamos muebles a la medida con los más altos estándares de calidad. ¡Descubre nuestro catálogo!</p>
-            <!-- <a href="#" class="text-light d-block mb-2"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a> -->
+            <a href="nosotros.php" class="text-light d-block mb-2"><i class="fa fa-angle-right mr-2"></i>Sobre nosotros</a>
             <a href="Contact.php" class="text-light d-block mb-2"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
             <!-- <a href="#" class="text-light d-block"><i class="fa fa-angle-right mr-2"></i>Términos y condiciones</a> -->
         </div>

@@ -6,9 +6,15 @@ include dirname(__DIR__) . '/vista/layout/head.php';
 
 <body>
     <?php
+    $_GET['pag'] = empty($_GET['pag']) ? 1 : $_GET['pag'];
     $body = 2;
     include dirname(__DIR__) . '/vista/layout/topBar.php';
     include dirname(__DIR__) . '/vista/layout/navBar.php';
+
+    include_once '../controlador/conexion.php';
+    $db = new Conexion();
+    $productosD = $db->consultarRegistros2('SELECT * FROM productos WHERE stock > 0 LIMIT 8');
+    mostrar($productosD);
     ?>
 
     <body>
@@ -139,11 +145,11 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                     <div class="row pb-3">
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
+                                <!-- <div>
                                     <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
                                     <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                                </div>
-                                <div class="ml-2">
+                                </div> -->
+                                <!-- <div class="ml-2">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-light dropdown-toggle"
                                             data-toggle="dropdown">Clasificación</button>
@@ -162,7 +168,7 @@ include dirname(__DIR__) . '/vista/layout/head.php';
                                             <a class="dropdown-item" href="#">30</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
