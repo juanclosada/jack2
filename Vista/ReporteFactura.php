@@ -58,7 +58,7 @@ $productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM 
         <!-- Encabezado -->
         <div class="row factura-header align-items-center">
             <div class="col-md-2">
-                <img src="favicon.jpg" alt="Logo" class="logo"> <!-- logo empresa 2JACK-->
+                <img src="favicon..jpg"  alt="Logo" class="logo"> <!-- logo empresa 2JACK-->
             </div>
             <div class="col-md-10 text-end">
                 <h4>2JACK S.A.S</h4>

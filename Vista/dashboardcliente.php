@@ -23,7 +23,7 @@ $carrito = $db->consultarRegistros2($sql, ['id' =>  $_SESSION['usuario']['id']])
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="favicon.jpg" rel="icon">
+    <link href="favicon..jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
