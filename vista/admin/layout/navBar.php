@@ -15,11 +15,11 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.php" class="nav-item nav-link <?php echo $home; ?>">Inicio</a>
-                        <a href="index.php" class="nav-item nav-link <?php echo $produc; ?>">Productos</a>
-                        <a href="shop.php" class="nav-item nav-link <?php echo $user; ?>">Usuarios</a>
-                        <a href="shop.php" class="nav-item nav-link <?php echo $user; ?>">Facturas</a>
-                        <a href="shop.php" class="nav-item nav-link <?php echo $user; ?>">Comentarios</a>
+                        <a href="dashboardadmin.php" class="nav-item nav-link <?php echo $home; ?>">Inicio</a>
+                        <a href="productos.php" class="nav-item nav-link <?php echo $produc; ?>">Productos</a>
+                        <a href="usuarios.php" class="nav-item nav-link <?php echo $user; ?>">Usuarios</a>
+                        <a href="facturas.php" class="nav-item nav-link <?php echo $fac; ?>">Facturas</a>
+                        <a href="comentarios.php" class="nav-item nav-link <?php echo $com; ?>">Comentarios</a>
                     </div>
                 </div>
             </nav>

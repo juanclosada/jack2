@@ -8,6 +8,6 @@
 <!-- Contact Javascript File -->
 <script src="../mail/jqBootstrapValidation.min.js"></script>
 <script src="../mail/contact.js"></script>
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Template Javascript -->
 <script src="../js/main.js"></script>

@@ -36,7 +36,9 @@ if (!empty($_SESSION['usuario'])) {
     }
 }
 ?>
-
+<?php
+include dirname(__DIR__) . '/vista/layout/script.php';
+?>
 
 <body>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
@@ -94,9 +96,7 @@ if (!empty($_SESSION['usuario'])) {
     include dirname(__DIR__) . '/vista/layout/footer.php';
     ?>
 </body>
-<?php
-include dirname(__DIR__) . '/vista/layout/script.php';
-?>
+
 <script>
     function togglePassword() {
         const input = document.getElementById("contrasena");

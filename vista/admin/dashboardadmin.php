@@ -15,9 +15,9 @@ if (session_status() === PHP_SESSION_NONE) {
 //     IntlDateFormatter::GREGORIAN
 // );
 $home = 'active';
-$produc = $user = '';
+$produc = $user = $fac = $com = '';
 if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1) {
-    header("location: login.php");
+   header("location: ../../vista/login.php");
 }
 $db = new Conexion('N');
 $usuarios = $db->contarRegistros('usuarios');
@@ -34,7 +34,7 @@ $comentarios = $db->contarRegistros('contactos');
     <!-- start section -->
     <div class="container">
         <h4>Bienvenido <?php echo $_SESSION['usuario']['nombre']; ?></h4>
-        <p><?php 
+        <p><?php
             //echo $formatter->format(new DateTime()) 
             ?></p>
         <span class="text-dark mb-5">Resumen</span>
