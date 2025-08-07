@@ -14,14 +14,14 @@ if (session_status() === PHP_SESSION_NONE) {
 //     'America/Bogota',
 //     IntlDateFormatter::GREGORIAN
 // );
-$produc = 'active';
-$home = $user = $fac = $com = '';
+$com = 'active';
+$home = $user = $fac = $produc = '';
 if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1) {
     header("location: ../../vista/login.php");
 }
 $db = new Conexion('N');
-$productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1 ORDER BY id_producto DESC');
-// mostrar($productos);
+$comentarios = $db->consultarRegistros2('SELECT * FROM contactos WHERE 1=1 ORDER BY id DESC');
+// mostrar($comentarios);
 ?>
 
 <body>
@@ -35,50 +35,35 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1 ORDER B
         <p><?php
             //echo $formatter->format(new DateTime()) 
             ?></p>
-        <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Agregar producto</button>
         <div class="table-responsive mt-3">
             <?php
-            if (!empty($productos)) { ?>
-                <table id="productos" class="table table-light table-borderless table-hover text-center mb-0 ">
+            if (!empty($comentarios)) { ?>
+                <table id="comentarios" class="table table-light table-borderless table-hover text-center mb-0 ">
                     <thead class="thead-dark">
                         <tr>
                             <th>Sec</th>
-                            <th>Imagen</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
-                            <th>Acciones</th>
+                            <th>Correo</th>
+                            <th>Asunto</th>
+                            <th>Mensaje</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
                         <?php
-                        foreach ($productos as $key => $value) { ?>
+                        foreach ($comentarios as $key => $value) { ?>
                             <tr>
                                 <td class="align-middle"><?php echo $key + 1; ?></td>
-                                <td class="align-middle"><img src="../<?php echo $value['imagen'] ?>" alt="" style="width: 50px;"> <?php echo $value['nombre'] ?> </td>
                                 <td class="align-middle"><?php echo $value['nombre']; ?></td>
-                                <td class="align-middle"><?php echo $value['descripcion']; ?></td>
-                                <td class="align-middle">$<?php echo number_format($value['precio']); ?></td>
-                                <td class="align-middle"><?php echo $value['stock']; ?></td>
-                                <td class="align-middle">
-                                    <input type='hidden' name='carrito_id' value="<?php echo $value['id_producto']; ?>">
-                                    <button type='button' class='btn btn-warning btn-sm' data-toggle="modal"
-                                        data-target="#editarProductoModal"
-                                        data-id="<?php echo $value['id_producto']; ?>"
-                                        data-nombre="<?php echo htmlspecialchars($value['nombre'], ENT_QUOTES); ?>"
-                                        data-descripcion="<?php echo htmlspecialchars($value['descripcion'], ENT_QUOTES); ?>"
-                                        data-precio="<?php echo $value['precio']; ?>"
-                                        data-stock="<?php echo $value['stock']; ?>"
-                                        onclick="cargarDatosEditar(this)"><i class="fas fa-edit"></i></button>
-                                </td>
+                                <td class="align-middle"><?php echo $value['correo']; ?></td>
+                                <td class="align-middle"><?php echo $value['asunto']; ?></td>
+                                <td class="align-middle"><?php echo $value['mensaje']; ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
             <?php
             } else {
-                echo "<h5>Sin productos seleccionados.</h5>";
+                echo "<h5>Sin comentarios seleccionados.</h5>";
                 echo "<a href='shop.php' class='btn btn-warning'>Comprar productos</a>";
             }
             ?>
@@ -197,7 +182,7 @@ include dirname(__DIR__) . '/admin/layout/script.php';
         document.getElementById("edit-precio").value = btn.dataset.precio;
         document.getElementById("edit-stock").value = btn.dataset.stock;
     }
-    $('#productos').DataTable({
+    $('#comentarios').DataTable({
         language: {
             url: './language.json'
         },

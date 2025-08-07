@@ -38,6 +38,7 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
             ?></p>
         <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Agregar usuario</button>
         <div class="table-responsive mt-3">
+
             <?php
             if (!empty($usuarios)) { ?>
                 <table id="usuarios" class="table table-light table-borderless table-hover text-center mb-0 ">
@@ -182,6 +183,7 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
 include dirname(__DIR__) . '/admin/layout/footer.php';
 ?>
 
+
 </html>
 <?php
 include dirname(__DIR__) . '/admin/layout/script.php';
@@ -196,6 +198,22 @@ include dirname(__DIR__) . '/admin/layout/script.php';
     $('#usuarios').DataTable({
         language: {
             url: './language.json'
-        }
+        },
+        dom: 'Bfrtip', // Dom layout para que aparezcan los botones
+        buttons: [{
+                extend: 'excelHtml5',
+                title: 'Reporte_Usuarios'
+            },
+            {
+                extend: 'pdfHtml5',
+                title: 'Reporte_Usuarios',
+                orientation: 'landscape',
+                pageSize: 'A4'
+            },
+            {
+                extend: 'print',
+                title: 'Reporte de Usuarios'
+            }
+        ]
     });
 </script>
