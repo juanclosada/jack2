@@ -13,8 +13,9 @@ $data['nombre'] = $_POST['nombre'] ?? '';
 $data['descripcion'] = $_POST['descripcion'] ?? '';
 $data['precio'] = $_POST['precio'] ?? 0;
 $data['stock'] = $_POST['stock'] ?? 0;
-$data['imagen'] = $_POST['imagen'] ?? '';
-
+if (!empty($_POST['imagen'])) {
+    $data['imagen'] = $_POST['imagen'];
+}
 // Validación básica
 if ($data['nombre'] && $data['precio'] >= 0 && $data['stock'] >= 0) {
     $imagen_url = '';
@@ -27,10 +28,8 @@ if ($data['nombre'] && $data['precio'] >= 0 && $data['stock'] >= 0) {
         } else {
             die("❌ Error al mover la imagen.");
         }
-    } else {
-        die("❌ No se subió ninguna imagen válida.");
     }
-    $db->insertarRegistro('productos', $data);
+    $db->actualizarRegistro('productos', $data, ['id_producto' => $_POST['id']]);
     header("location: ../vista/admin/productos.php");
 } else {
     echo "❗ Por favor, completa todos los campos correctamente.";

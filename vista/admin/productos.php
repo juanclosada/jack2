@@ -20,7 +20,7 @@ if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1
     header("location: ../../vista/login.php");
 }
 $db = new Conexion('N');
-$productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
+$productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1 ORDER BY id_producto DESC');
 // mostrar($productos);
 ?>
 
@@ -62,10 +62,15 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
                                 <td class="align-middle">$<?php echo number_format($value['precio']); ?></td>
                                 <td class="align-middle"><?php echo $value['stock']; ?></td>
                                 <td class="align-middle">
-                                    <form action='../modelo/eliminar_carrito.php' method='post' class='m-0'>
-                                        <input type='hidden' name='carrito_id' value="<?php echo $value['id_producto']; ?>">
-                                        <button type='submit' class='btn btn-danger btn-sm'>🗑️</button>
-                                    </form>
+                                    <input type='hidden' name='carrito_id' value="<?php echo $value['id_producto']; ?>">
+                                    <button type='button' class='btn btn-warning btn-sm' data-toggle="modal"
+                                        data-target="#editarProductoModal"
+                                        data-id="<?php echo $value['id_producto']; ?>"
+                                        data-nombre="<?php echo htmlspecialchars($value['nombre'], ENT_QUOTES); ?>"
+                                        data-descripcion="<?php echo htmlspecialchars($value['descripcion'], ENT_QUOTES); ?>"
+                                        data-precio="<?php echo $value['precio']; ?>"
+                                        data-stock="<?php echo $value['stock']; ?>"
+                                        onclick="cargarDatosEditar(this)"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -119,11 +124,59 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerra</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar producto</button>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editarProductoModal" tabindex="-1" role="dialog" aria-labelledby="editarProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="../../modelo/actualizarProducto.php" method="POST" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Producto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="edit-id">
+
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" name="nombre" id="edit-nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea class="form-control" name="descripcion" id="edit-descripcion" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Precio</label>
+                            <input type="number" class="form-control" name="precio" id="edit-precio" step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="number" class="form-control" name="stock" id="edit-stock" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Imagen (opcional)</label>
+                            <input type="file" class="form-control-file" name="imagen" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
@@ -137,6 +190,13 @@ include dirname(__DIR__) . '/admin/layout/footer.php';
 include dirname(__DIR__) . '/admin/layout/script.php';
 ?>
 <script>
+    function cargarDatosEditar(btn) {
+        document.getElementById("edit-id").value = btn.dataset.id;
+        document.getElementById("edit-nombre").value = btn.dataset.nombre;
+        document.getElementById("edit-descripcion").value = btn.dataset.descripcion;
+        document.getElementById("edit-precio").value = btn.dataset.precio;
+        document.getElementById("edit-stock").value = btn.dataset.stock;
+    }
     $('#productos').DataTable({
         language: {
             url: './language.json'
