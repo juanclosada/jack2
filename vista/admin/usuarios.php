@@ -22,6 +22,7 @@ if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1
 $db = new Conexion('N');
 $usuarios = $db->consultarRegistros2('SELECT u.*, r.cargo FROM usuarios u LEFT JOIN roles r ON u.id_rol = r.id_rol WHERE 1=1 ORDER BY id_usuario DESC');
 // mostrar($usuarios);
+$roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
 ?>
 
 <body>
@@ -63,8 +64,8 @@ $usuarios = $db->consultarRegistros2('SELECT u.*, r.cargo FROM usuarios u LEFT J
                                         data-target="#editarProductoModal"
                                         data-id="<?php echo $value['id_usuario']; ?>"
                                         data-nombre="<?php echo htmlspecialchars($value['nombre'], ENT_QUOTES); ?>"
-                                        data-descripcion="<?php echo htmlspecialchars($value['correo'], ENT_QUOTES); ?>"
-                                        data-precio="<?php echo $value['id_rol']; ?>"
+                                        data-correo="<?php echo htmlspecialchars($value['correo'], ENT_QUOTES); ?>"
+                                        data-rol="<?php echo $value['id_rol']; ?>"
                                         onclick="cargarDatosEditar(this)"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
@@ -99,17 +100,26 @@ $usuarios = $db->consultarRegistros2('SELECT u.*, r.cargo FROM usuarios u LEFT J
 
                         <div class="form-group">
                             <label for="descripcion">Correo</label>
-                            <input type="email" class="form-control" name="correo " placeholder="Ingresa el correo " required></input>
+                            <input type="email" class="form-control" name="correo" placeholder="Ingresa el correo " required></input>
                         </div>
 
                         <div class="form-group">
-                            <label for="precio">Precio</label>
-                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Ej: 199.99" step="0.01" min="1" required>
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirma la contraseña</label>
+                            <input type="password" class="form-control" name="contrasena1" id="contrasena1" required>
                         </div>
 
                         <div class="form-group">
                             <label for="stock">Tipo de usuario</label>
-                            <select name="id_rol" id="id_rol" value="">
+                            <select class="form form-control" name="id_rol" id="id_rol" value="" required>
+                                <option value="">Seleccione...</option>
+                                <?php
+                                foreach ($roles as $key) { ?>
+                                    <option value="<?php echo $key['id_rol'] ?>"><?php echo $key['cargo'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
 
@@ -147,13 +157,12 @@ $usuarios = $db->consultarRegistros2('SELECT u.*, r.cargo FROM usuarios u LEFT J
                         </div>
 
                         <div class="form-group">
-                            <label>Precio</label>
-                            <input type="number" class="form-control" name="precio" id="edit-precio" step="0.01" required>
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" required>
                         </div>
-
                         <div class="form-group">
-                            <label>Stock</label>
-                            <input type="number" class="form-control" name="stock" id="edit-stock" required>
+                            <label>Confirma la contraseña</label>
+                            <input type="password" class="form-control" name="contrasena1" id="contrasena1" required>
                         </div>
 
                         <div class="form-group">

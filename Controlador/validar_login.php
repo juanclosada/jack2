@@ -1,3 +1,6 @@
+<head>
+    <link href="../vista/css/style.css" rel="stylesheet">
+</head>
 <?php
 session_start();
 include_once('conexion.php');
@@ -9,7 +12,6 @@ $sql = "SELECT u.*, r.cargo FROM usuarios  u JOIN roles r  ON u.id_rol = r.id_ro
 $db = new Conexion();
 
 $usuario = $db->consultarRegistro($sql, ['correo' => $correo]);
-echo password_hash($contrasena, PASSWORD_DEFAULT);
 if (!empty($usuario)) {
     if (password_verify($contrasena, $usuario["contrasena"])) {
         $_SESSION['usuario']['rol'] = $usuario['cargo'];
@@ -25,13 +27,34 @@ if (!empty($usuario)) {
                 header("location: ../vista/index.php");
                 break;
             default:
-                echo "Rol no definido<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+                echo '
+    <div class="text-center" style="margin: 50px auto; max-width: 500px;">
+        <div class="alert alert-danger text-center" role="alert">
+            Rol no definido.<br>
+            </div>
+            <a href="../vista/login.php" class="btn btn-sm btn-primary mt-3">Ingresar Nuevamente</a>
+    </div>
+';
                 break;
         }
     } else {
-        echo "Usuario o contraseña incorrectos.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+        echo '
+    <div class="text-center" style="margin: 50px auto; max-width: 500px;">
+        <div class="alert alert-danger text-center" role="alert">
+            Usuario o contraseña incorrectos.<br>
+            </div>
+            <a href="../vista/login.php" class="btn btn-sm btn-primary mt-3">Ingresar Nuevamente</a>
+    </div>
+';
     }
 } else {
-    echo "El usuario no existe.<a href='../vista/login.php'>Ingresar Nuevamente</a>";
+    echo '
+    <div class="text-center" style="margin: 50px auto; max-width: 500px;">
+        <div class="alert alert-danger text-center" role="alert">
+            El usuario no existe..<br>
+            </div>
+            <a href="../vista/login.php" class="btn btn-sm btn-primary mt-3">Ingresar Nuevamente</a>
+    </div>
+';
 }
 die();
