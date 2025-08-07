@@ -16,7 +16,7 @@
             echo '<a href="registro.php" class="btn btn-light">Registrete Aquí</a>';
           } else {
             echo "<h5 class='mt-1 mr-2'>" . $_SESSION['usuario']['nombre'] . '</h5>';
-            echo '<a href="logout.php" class="btn btn-light">Salir</a>';
+            echo '<a href="../logout.php" class="btn btn-light">Salir</a>';
           }
           ?>
 
