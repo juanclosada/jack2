@@ -41,7 +41,7 @@ if (!empty($usuario)) {
         echo '
     <div class="text-center" style="margin: 50px auto; max-width: 500px;">
         <div class="alert alert-danger text-center" role="alert">
-            Usuario o contraseña incorrectos.<br>
+           Las contraseñas no coinciden.<br>
             </div>
             <a href="../vista/login.php" class="btn btn-sm btn-primary mt-3">Ingresar Nuevamente</a>
     </div>

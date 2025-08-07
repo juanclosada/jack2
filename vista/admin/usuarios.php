@@ -64,9 +64,10 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
                                         data-target="#editarProductoModal"
                                         data-id="<?php echo $value['id_usuario']; ?>"
                                         data-nombre="<?php echo htmlspecialchars($value['nombre'], ENT_QUOTES); ?>"
-                                        data-correo="<?php echo htmlspecialchars($value['correo'], ENT_QUOTES); ?>"
+                                        data-correo="<?php echo $value['correo']; ?>"
                                         data-rol="<?php echo $value['id_rol']; ?>"
                                         onclick="cargarDatosEditar(this)"><i class="fas fa-edit"></i></button>
+                                    <a href="../../modelo/eliminarUsuario.php?id=<?php echo base64_encode($value['id_usuario']); ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -105,11 +106,11 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
 
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input type="password" class="form-control" name="contrasena" id="contrasena" required>
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Ingresa la contraseña " required>
                         </div>
                         <div class="form-group">
                             <label>Confirma la contraseña</label>
-                            <input type="password" class="form-control" name="contrasena1" id="contrasena1" required>
+                            <input type="password" class="form-control" name="contrasena1" id="contrasena1" placeholder="Confirme la contraseña " required>
                         </div>
 
                         <div class="form-group">
@@ -134,10 +135,10 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
     </div>
     <div class="modal fade" id="editarProductoModal" tabindex="-1" role="dialog" aria-labelledby="editarProductoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form action="../../modelo/actualizarProducto.php" method="POST" enctype="multipart/form-data">
+            <form action="../../modelo/actualizarUsuario.php" method="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Editar Producto</h5>
+                        <h5 class="modal-title">Editar usuario</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -152,22 +153,18 @@ $roles = $db->consultarRegistros2('SELECT * FROM roles WHERE 1=1');
                         </div>
 
                         <div class="form-group">
-                            <label>Descripción</label>
-                            <textarea class="form-control" name="descripcion" id="edit-descripcion" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" class="form-control" name="contrasena" id="contrasena" required>
+                            <label>Correo</label>
+                            <input type="email" class="form-control" name="correo" id="edit-correo" required></input>
                         </div>
                         <div class="form-group">
-                            <label>Confirma la contraseña</label>
-                            <input type="password" class="form-control" name="contrasena1" id="contrasena1" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Imagen (opcional)</label>
-                            <input type="file" class="form-control-file" name="imagen" accept="image/*">
+                            <label for="stock">Tipo de usuario</label>
+                            <select class="form form-control" name="id_rol" id="edit-rol" value="" required>
+                                <option value="">Seleccione...</option>
+                                <?php
+                                foreach ($roles as $key) { ?>
+                                    <option value="<?php echo $key['id_rol'] ?>"><?php echo $key['cargo'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
 
@@ -193,9 +190,8 @@ include dirname(__DIR__) . '/admin/layout/script.php';
     function cargarDatosEditar(btn) {
         document.getElementById("edit-id").value = btn.dataset.id;
         document.getElementById("edit-nombre").value = btn.dataset.nombre;
-        document.getElementById("edit-descripcion").value = btn.dataset.descripcion;
-        document.getElementById("edit-precio").value = btn.dataset.precio;
-        document.getElementById("edit-stock").value = btn.dataset.stock;
+        document.getElementById("edit-correo").value = btn.dataset.correo;
+        document.getElementById("edit-rol").value = btn.dataset.rol;
     }
     $('#usuarios').DataTable({
         language: {
