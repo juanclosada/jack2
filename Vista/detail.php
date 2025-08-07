@@ -48,16 +48,16 @@ $producto = $db->consultarRegistro("SELECT * FROM productos WHERE id_producto = 
                     <div id="product-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner bg-light">
                             <div class="carousel-item active">
-                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" style="max-height:600px" alt="Image">
+                                <img class="w-100 h-100" src="<?php echo $producto['imagen'] ?>" style="max-height:600px" alt="Image">
                             </div>
                             <!-- <div class="carousel-item"> -->
-                            <!-- <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image"> -->
+                            <!-- <img class="w-100 h-100" src="<?php echo $producto['imagen'] ?>" alt="Image"> -->
                             <!-- </div> -->
                             <!-- <div class="carousel-item">
-                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                                <img class="w-100 h-100" src="<?php echo $producto['imagen'] ?>" alt="Image">
                             </div> -->
                             <!-- <div class="carousel-item">
-                                <img class="w-100 h-100" src="<?php echo $producto['URL.Imagen'] ?>" alt="Image">
+                                <img class="w-100 h-100" src="<?php echo $producto['imagen'] ?>" alt="Image">
                             </div> -->
                         </div>
                         <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">

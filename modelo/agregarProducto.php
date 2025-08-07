@@ -13,17 +13,17 @@ $data['nombre'] = $_POST['nombre'] ?? '';
 $data['descripcion'] = $_POST['descripcion'] ?? '';
 $data['precio'] = $_POST['precio'] ?? 0;
 $data['stock'] = $_POST['stock'] ?? 0;
-$data['URL.Imagen'] = $_POST['imagen'] ?? '';
+$data['imagen'] = $_POST['imagen'] ?? '';
 
 // Validación básica
-if ($nombre && $precio >= 0 && $stock >= 0) {
+if ($data['nombre'] && $data['precio'] >= 0 && $data['stock'] >= 0) {
     $imagen_url = '';
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         $nombreImagen = basename($_FILES['imagen']['name']);
-        $rutaDestino = 'uploads/' . time() . '_' . $nombreImagen;
+        $rutaDestino = '../vista/img/' . time() . '_' . $nombreImagen;
 
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
-            $imagen_url = $rutaDestino;
+            $data['imagen'] = $rutaDestino;
         } else {
             die("❌ Error al mover la imagen.");
         }

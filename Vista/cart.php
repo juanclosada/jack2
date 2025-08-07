@@ -77,7 +77,7 @@ if (!empty($carrito)) {
                             foreach ($carrito as $key => $value) { ?>
                                 <tr>
                                     <td class="align-middle"><?php echo $key + 1; ?></td>
-                                    <td class="align-middle"><img src="<?php echo $value['URL.Imagen'] ?>" alt="" style="width: 50px;"> <?php echo $value['nombre'] ?> </td>
+                                    <td class="align-middle"><img src="<?php echo $value['imagen'] ?>" alt="" style="width: 50px;"> <?php echo $value['nombre'] ?> </td>
                                     <td class="align-middle">$<?php echo number_format($value['precio']); ?></td>
                                     <td class="align-middle">
                                         <form action="../modelo/agregar_carrito.php" method="post">

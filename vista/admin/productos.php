@@ -56,7 +56,7 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
                         foreach ($productos as $key => $value) { ?>
                             <tr>
                                 <td class="align-middle"><?php echo $key + 1; ?></td>
-                                <td class="align-middle"><img src="../<?php echo $value['URL.Imagen'] ?>" alt="" style="width: 50px;"> <?php echo $value['nombre'] ?> </td>
+                                <td class="align-middle"><img src="../<?php echo $value['imagen'] ?>" alt="" style="width: 50px;"> <?php echo $value['nombre'] ?> </td>
                                 <td class="align-middle"><?php echo $value['nombre']; ?></td>
                                 <td class="align-middle"><?php echo $value['descripcion']; ?></td>
                                 <td class="align-middle">$<?php echo number_format($value['precio']); ?></td>
@@ -84,7 +84,7 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form method="post" action="../../modelo/agregarProducto.php">
+                <form method="post" action="../../modelo/agregarProducto.php" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Agregar producto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -94,27 +94,27 @@ $productos = $db->consultarRegistros2('SELECT * FROM productoS WHERE 1=1');
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nombre">Nombre del producto</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingresa el nombre" required>
+                            <input type="text" class="form-control" name="nombre" placeholder="Ingresa el nombre" required>
                         </div>
 
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" id="descripcion" rows="3" placeholder="Describe el producto" required></textarea>
+                            <textarea class="form-control" name="descripcion" rows="3" placeholder="Describe el producto" required></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="precio">Precio</label>
-                            <input type="number" class="form-control" id="precio" placeholder="Ej: 199.99" step="0.01" min="0" required>
+                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Ej: 199.99" step="0.01" min="1" required>
                         </div>
 
                         <div class="form-group">
                             <label for="stock">Stock disponible</label>
-                            <input type="number" class="form-control" id="stock" placeholder="Ej: 10" min="0" required>
+                            <input type="number" class="form-control" id="stock" name="stock" placeholder="Ej: 10" min="1" required>
                         </div>
 
                         <div class="form-group">
                             <label for="imagen">URL de la imagen</label>
-                            <input type="file" class="form-control" accept="image/*" id="imagen" placeholder="https://ejemplo.com/imagen.jpg" required>
+                            <input type="file" name="imagen" class="form-control-file" accept="image/*" required>
                         </div>
 
                     </div>

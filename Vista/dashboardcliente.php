@@ -53,7 +53,7 @@ $carrito = $db->consultarRegistros2($sql, ['id' =>  $_SESSION['usuario']['id']])
                     <?php foreach ($productos as $key => $row) { ?>
                         <div class="col-md-6">
                             <div class="card mb-4">
-                                <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+                                <img src="<?= $row['imagen'] ?>" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['nombre'] ?></h5>
                                     <p><?= $row['descripcion'] ?></p>
@@ -115,7 +115,7 @@ $carrito = $db->consultarRegistros2($sql, ['id' =>  $_SESSION['usuario']['id']])
             <?php while ($row = $resultado->fetch_assoc()) { ?>
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="<?= $row['URL.Imagen'] ?>" class="card-img-top">
+                        <img src="<?= $row['imagen'] ?>" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title"><?= $row['nombre'] ?></h5>
                             <p><?= $row['descripcion'] ?></p>
