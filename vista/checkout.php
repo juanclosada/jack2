@@ -31,11 +31,13 @@ include_once dirname(__DIR__) . '/vista/layout/head.php';
     $carrito = $db->consultarRegistros2($sql, ['id' =>  $_SESSION['usuario']['id']]);
     $total = 0;
     $productos = [];
-    foreach ($carrito as $key => $item) {
-        $item['total'] = $item['precio'] * $item['cantidad'];
-        $item['subtotal'] = $item['precio'];
-        $total +=  $item['total'];
-        $productos[] = $item;
+    if (!empty($carrito)) {
+        foreach ($carrito as $key => $item) {
+            $item['total'] = $item['precio'] * $item['cantidad'];
+            $item['subtotal'] = $item['precio'];
+            $total +=  $item['total'];
+            $productos[] = $item;
+        }
     }
     $datos = [
         'usuario_id' => $_SESSION['usuario']['id'],
