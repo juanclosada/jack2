@@ -104,11 +104,27 @@ include_once dirname(__DIR__) . '/vista/layout/head.php';
                     <div class="container mt-5">
                         <div class="card mx-auto" style="max-width: 500px;">
                             <div class="card-header bg-success text-white">
-                                <h4 class="mb-0">Formulario de Pago</h4>
+                                <h4 class="mb-0">Proceso de pago y envio</h4>
                             </div>
                             <div class="card-body">
                                 <form action="../modelo/procesar_pago.php" method="POST" autocomplete="on">
-
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Dirección de envío</label>
+                                        <input type="text" class="form-control" id="envio" name="envio" required placeholder="Dirección de residencia">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Ciudad</label>
+                                        <select class="form-control" id="ciudad" name="ciudad" required>
+                                            <option value="">Seleccione una opción</option>
+                                            <option value="Bogotá">Bogotá</option>
+                                            <option value="Tunja">Tunja</option>
+                                            <option value="Medellín">Medellín</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Celular</label>
+                                        <input type="text" class="form-control" id="celular" name="celular" required placeholder="Número de celular">
+                                    </div>
                                     <!-- Método de pago -->
                                     <div class="mb-3">
                                         <label for="metodo" class="form-label">Método de pago</label>
@@ -175,5 +191,115 @@ include dirname(__DIR__) . '/vista/layout/footer.php';
 <?php
 include dirname(__DIR__) . '/vista/layout/script.php';
 ?>
+<script>
+    // filepath: c:\wamp64\www\leo\jack2\vista\checkout.php
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const metodo = document.getElementById('metodo');
+        const nombreTarjeta = document.getElementById('nombre').closest('.mb-3');
+        const numeroTarjeta = document.getElementById('numero').closest('.mb-3');
+        const expira = document.getElementById('expira').closest('.mb-3');
+        const cvv = document.getElementById('cvv').closest('.mb-3');
+
+        function actualizarCampos() {
+            if (metodo.value === '3') { // Nequi
+                nombreTarjeta.style.display = 'none';
+                expira.style.display = 'none';
+                cvv.style.display = 'none';
+                numeroTarjeta.querySelector('label').textContent = 'Número de celular Nequi';
+                numeroTarjeta.querySelector('input').placeholder = 'Número de celular Nequi';
+            } else if (metodo.value === '1' || metodo.value === '2') { // Tarjetas
+                nombreTarjeta.style.display = '';
+                expira.style.display = '';
+                cvv.style.display = '';
+                numeroTarjeta.querySelector('label').textContent = 'Número de tarjeta';
+                numeroTarjeta.querySelector('input').placeholder = 'Número de tarjeta';
+            } else {
+                // Por defecto, muestra todo
+                nombreTarjeta.style.display = '';
+                expira.style.display = '';
+                cvv.style.display = '';
+                numeroTarjeta.querySelector('label').textContent = 'Número de tarjeta / Nequi';
+                numeroTarjeta.querySelector('input').placeholder = 'Número de tarjeta o Nequi';
+            }
+        }
+
+        metodo.addEventListener('change', actualizarCampos);
+        actualizarCampos(); // Inicializa al cargar
+    });
+</script>
+<script>
+    // filepath: c:\wamp64\www\leo\jack2\vista\checkout.php
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const metodo = document.getElementById('metodo');
+        const nombreTarjeta = document.getElementById('nombre') ? document.getElementById('nombre').closest('.mb-3') : null;
+        const inputNombre = document.getElementById('nombre');
+        const numeroTarjeta = document.getElementById('numero') ? document.getElementById('numero').closest('.mb-3') : null;
+        const inputNumero = document.getElementById('numero');
+        const expira = document.getElementById('expira') ? document.getElementById('expira').closest('.mb-3') : null;
+        const inputExpira = document.getElementById('expira');
+        const cvv = document.getElementById('cvv') ? document.getElementById('cvv').closest('.mb-3') : null;
+        const inputCvv = document.getElementById('cvv');
+        const form = document.querySelector('form[action="../modelo/procesar_pago.php"]');
+
+        function actualizarCampos() {
+            if (!nombreTarjeta || !numeroTarjeta || !expira || !cvv) return;
+
+            if (metodo.value === '3') { // Nequi
+                nombreTarjeta.style.display = 'none';
+                expira.style.display = 'none';
+                cvv.style.display = 'none';
+                numeroTarjeta.querySelector('label').textContent = 'Número de celular Nequi';
+                inputNumero.placeholder = 'Número de celular Nequi';
+
+                // Quitar required de campos de tarjeta
+                inputNombre.required = false;
+                inputExpira.required = false;
+                inputCvv.required = false;
+            } else if (metodo.value === '1' || metodo.value === '2') { // Tarjetas
+                nombreTarjeta.style.display = '';
+                expira.style.display = '';
+                cvv.style.display = '';
+                numeroTarjeta.querySelector('label').textContent = 'Número de tarjeta';
+                inputNumero.placeholder = 'Número de tarjeta';
+
+                // Poner required a campos de tarjeta
+                inputNombre.required = true;
+                inputExpira.required = true;
+                inputCvv.required = true;
+            } else {
+                // Por defecto, muestra todo
+                nombreTarjeta.style.display = '';
+                expira.style.display = '';
+                cvv.style.display = '';
+                numeroTarjeta.querySelector('label').textContent = 'Número de tarjeta / Nequi';
+                inputNumero.placeholder = 'Número de tarjeta o Nequi';
+
+                // Poner required a campos de tarjeta
+                inputNombre.required = true;
+                inputExpira.required = true;
+                inputCvv.required = true;
+            }
+        }
+
+        if (metodo) {
+            metodo.addEventListener('change', actualizarCampos);
+            actualizarCampos(); // Inicializa al cargar
+        }
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                if (metodo && metodo.value === '3') { // Nequi
+                    const otp = prompt('Ingrese el código OTP enviado a su celular Nequi:');
+                    if (!otp) {
+                        alert('Debe ingresar el código OTP para continuar.');
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+    });
+</script>
 
 </html>
