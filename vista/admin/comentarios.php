@@ -7,13 +7,6 @@ include_once('../../controlador/conexion.php');
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-// $formatter = new IntlDateFormatter(
-//     'es_CO', // idioma local
-//     IntlDateFormatter::FULL, // fecha completa (ej: miércoles, 30 de julio de 2025)
-//     IntlDateFormatter::SHORT, // hora corta (ej: 9:38 p. m.)
-//     'America/Bogota',
-//     IntlDateFormatter::GREGORIAN
-// );
 $com = 'active';
 $home = $user = $fac = $produc = '';
 if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1) {

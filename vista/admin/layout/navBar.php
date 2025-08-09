@@ -18,9 +18,9 @@
                         <a href="dashboardadmin.php" class="nav-item nav-link <?php echo $home; ?>">Inicio</a>
                         <a href="productos.php" class="nav-item nav-link <?php echo $produc; ?>">Productos</a>
                         <a href="usuarios.php" class="nav-item nav-link <?php echo $user; ?>">Usuarios</a>
-                        <!-- <a href="facturas.php" class="nav-item nav-link <?php
-                                                                                // echo $fac; 
-                                                                                ?>">Facturas</a> -->
+                        <a href="facturas.php" class="nav-item nav-link <?php
+                                                                        echo $fac;
+                                                                        ?>">Facturas</a>
                         <a href="comentarios.php" class="nav-item nav-link <?php echo $com; ?>">Comentarios</a>
                     </div>
                 </div>

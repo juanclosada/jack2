@@ -1,13 +1,13 @@
 <?php
 
-include '../controlador/conexion.php';
+
+include_once('../../controlador/conexion.php');
 session_start();
-if (!isset($_SESSION['usuario']['id'])) {
-    header("Location: ../vista/login.php");
-    exit();
+if (empty($_SESSION['usuario']['id_rol']) || $_SESSION['usuario']['id_rol'] != 1) {
+    header("location: ../../vista/login.php");
 }
 $factura_id = base64_decode($_GET['factura_id']);
-$db = new Conexion();
+$db = new Conexion('N');
 $factura = $db->consultarRegistro('SELECT * FROM factura WHERE id = :id', ['id' => $factura_id]);
 if (empty($factura)) {
     echo "Factura no encontrada.";
@@ -50,7 +50,7 @@ $productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM 
         }
     </style>
     <?php
-    include dirname(__DIR__) . '/vista/layout/head.php'; ?>
+    include dirname(__DIR__) . '/admin/layout/head.php'; ?>
 </head>
 
 <body>
@@ -58,7 +58,7 @@ $productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM 
         <!-- Encabezado -->
         <div class="row factura-header align-items-center">
             <div class="col-md-2">
-                <img src="favicon.jpg"  alt="Logo" class="logo"> <!-- logo empresa 2JACK-->
+                <img src="../favicon.jpg" alt="Logo" class="logo"> <!-- logo empresa 2JACK-->
             </div>
             <div class="col-md-10 text-end">
                 <h4>2JACK S.A.S</h4>
@@ -107,7 +107,7 @@ $productos = $db->consultarRegistros2('SELECT d.*, p.nombre, p.descripcion FROM 
             <button class="btn btn-primary" onclick="window.print()">
                 🖨️ Imprimir factura
             </button>
-            <a href="compras.php" class="btn btn-secondary">
+            <a href="facturas.php" class="btn btn-secondary">
                 Volver
                 </button>
         </div>
