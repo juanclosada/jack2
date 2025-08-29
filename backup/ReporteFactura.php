@@ -64,7 +64,7 @@ $total = 0;
                 <h4>2JACK S.A.S</h4>
                 <p>NIT: 900000000-1<br>
                     Dirección: Calle Ficticia #123, Bogotá, Colombia<br>
-                    Tel: (1) 0000000 | Email: contacto@2jack.com</p>
+                    Tel: (+57) 603520236 | Email: contacto@2jack.com</p>
             </div>
         </div>
 

@@ -1,13 +1,14 @@
 <?php
-
-define('VIEW_PATH', __DIR__ . '/../Vista/');
-define('ENCABEZADO', __DIR__ . '/../Vista/Encabezado.php');
-define('PIEPAGINA', __DIR__ . '/../Vista/Piepagina.php');
-define('CONTROLLER_PATH', __DIR__ . '/../Controlador/');
-define('IMG_PATH', '/jack2/Vista/img/');
-define('CSS_PATH', '/jack2/Vista/css/');
-define('JS_PATH', '/jack2/Vista/js/');
-define('LIB_PATH', '/jack2/Vista/lib/');
-define('PHP_PATH', '/jack2/index.php/');
-
-define('VISTA_PATH', '/jack2/vista/');
+// Database configuration
+define("DB_HOST", "localhost");
+define("DB_TABLE", "mi_negocio");
+define("DB_USER", "root");
+define("DB_PASSWORD", "");
+//Envio de correo
+define("SERVER_EMAIL_USERNAME", "jhonatan.soporte98@gmail.com");
+define("SERVER_EMAIL_PASSWORD", "hmfcgbbhfmchzdcn");
+define("SERVER_EMAIL_HOST", "smtp.gmail.com");
+define("SERVER_EMAIL_PORT", "587");
+define("SERVER_EMAIL_SECURE", "tls");
+define("EMAIL_ADM_PLATAFORMA", "andresleonardo2417@gmail.com");
+define("NOMBRE_ADM_PLATAFORMA", "INDUSTRIA ALCOBAS 2 JACK");
